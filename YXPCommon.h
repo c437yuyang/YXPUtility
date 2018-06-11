@@ -4,7 +4,7 @@
 #include <vector>
 #include <ctime>
 #include <cassert>
-
+#include <functional>
 
 #define ARRSIZE(arr) (sizeof(arr)/sizeof(arr[0]))
 
@@ -16,35 +16,39 @@ namespace yxp_utility
 	public:
 		Heap() :heap_arr_() {}
 		Heap(const std::vector<T> & v)
-			: heap_arr_(v), InitHeap()
+			: heap_arr_(v)
 		{
+			InitHeap();
 		}
 
 		Heap(const T*arr, size_t n)
-			: heap_arr_(arr, arr + n), InitHeap()
+			: heap_arr_(arr, arr + n)
 		{
+			InitHeap();
 		}
 
 		template<class T>
 		void Push(const T& val)
 		{
-			heap.push_back(val);
-			std::push_heap(heap_arr_.begin(), heap_arr_.end(), Comp);
+			heap_arr_.push_back(val);
+			std::push_heap(heap_arr_.begin(), heap_arr_.end(), Comp());
 		}
 
 		T Pop()
 		{
-			std::pop_heap(heap_arr_.begin(), heap_arr_.end(), SmallHeap);
-			T back_save = heap.back();
-			heap.pop_back();
+			std::pop_heap(heap_arr_.begin(), heap_arr_.end(), Comp());
+			T back_save = heap_arr_.back();
+			heap_arr_.pop_back();
 			return back_save;
 		}
+
+		size_t size() { return heap_arr_.size(); }
 
 	private:
 		std::vector<T> heap_arr_;
 		void InitHeap()
 		{
-			std::make_heap(heap_arr_.begin(), heap_arr_.end(), Comp);
+			std::make_heap(heap_arr_.begin(), heap_arr_.end(), Comp());
 		}
 
 	};
