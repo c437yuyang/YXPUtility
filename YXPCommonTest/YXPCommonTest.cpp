@@ -35,6 +35,15 @@ TEST(HeapTest, demo3)
 	EXPECT_EQ(h.Pop(), 1);
 }
 
+TEST(RandomHelperTest, demo1) 
+{
+	yxp_utility::RandomHelper::initSeed();
+	auto v = yxp_utility::RandomHelper::randomMatrix(5, 5, -10, 10);
+	yxp_utility::ArrayHelper::printMatrix(v);
+	assert(v.size() == 5);
+}
+
+
 int main(int argc, char* argv[])
 {
 	::testing::InitGoogleTest(&argc, argv);

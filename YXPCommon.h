@@ -68,12 +68,17 @@ namespace yxp_utility
 		template<class T>
 		inline static void printArr(const std::vector<T> &arr, char delimeter = ' ', bool endWithNewLine = true)
 		{
-			size_t n = arr.size();
-			for (size_t i = 0; i != n; ++i)
-				std::cout << arr[i] << delimeter;
+			std::for_each(arr.begin(), arr.end(), [delimeter](const T&val) { std::cout << val << delimeter; });
 			if (endWithNewLine)
 				std::cout << std::endl;
 		}
+
+		template<class T>
+		inline static void printMatrix(const std::vector<std::vector<T>> &mat, char delimeter = ' ')
+		{
+			std::for_each(mat.begin(), mat.end(), [delimeter](const std::vector<T>&v) { printArr(v, delimeter, true); });
+		}
+
 	};
 
 	class RandomHelper
@@ -140,10 +145,27 @@ namespace yxp_utility
 				arr[i] = randomInt(min, max);
 		}
 
+		/*
+			get random integer vector
+		*/
 		inline static std::vector<int> randomArray(size_t size, int min, int max)
 		{
 			std::vector<int> res;
 			randomArray(res, size, min, max);
+			return res;
+		}
+
+		/*
+			get random integer matrix using std::vector<std::vector<int>>
+		*/
+		inline static std::vector<std::vector<int>> randomMatrix(size_t rows, size_t cols, int min, int max)
+		{
+			assert(rows > 0 && cols > 0);
+			std::vector<std::vector<int>> res;
+			res.reserve(rows);
+			//std::for_each(res.begin(), res.end(), [cols](std::vector<int>&v) { v.reserve(cols); });
+			for (size_t i = 0; i < rows; ++i)
+				res.push_back(std::move(randomArray(cols, min, max)));
 			return res;
 		}
 
