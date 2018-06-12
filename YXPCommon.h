@@ -79,6 +79,20 @@ namespace yxp_utility
 			std::for_each(mat.begin(), mat.end(), [delimeter](const std::vector<T>&v) { printArr(v, delimeter, true); });
 		}
 
+		template<class T>
+		inline static void printMatrix(const T* mat, size_t rows, size_t cols, char delimeter = ' ', bool endWithNewLine = true)
+		{
+			//std::for_each(mat, mat + rows, [delimeter, cols](const T*arr) { printArr(arr, cols, delimeter, true); });
+			for (size_t i = 0; i < rows; ++i)
+			{
+				for (size_t j = 0; j < cols; ++j)
+					std::cout << mat[i*cols + j] << delimeter;
+				std::cout << std::endl;
+			}
+			if (endWithNewLine)
+				std::cout << std::endl;
+		}
+
 	};
 
 	class RandomHelper
@@ -154,6 +168,19 @@ namespace yxp_utility
 			randomArray(res, size, min, max);
 			return res;
 		}
+
+
+		/*
+			get random integer matrix using 1D Array,do not allocate memory
+		*/
+		inline static void randomMatrix(int * mat, size_t rows, size_t cols, int min, int max)
+		{
+			assert(mat != nullptr && rows > 0 && cols > 0);
+			for (size_t i = 0; i < rows; ++i)
+				for (size_t j = 0; j < cols; ++j)
+					mat[i*cols + j] = randomInt(min, max);
+		}
+
 
 		/*
 			get random integer matrix using std::vector<std::vector<int>>
