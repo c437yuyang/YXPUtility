@@ -11,23 +11,23 @@ namespace yxp_utility
 		Heap(const std::vector<T> & v)
 			: heap_arr_(v)
 		{
-			InitHeap();
+			initHeap();
 		}
 
 		Heap(const T*arr, size_t n)
 			: heap_arr_(arr, arr + n)
 		{
-			InitHeap();
+			initHeap();
 		}
 
 		template<class T>
-		void Push(const T& val)
+		void push(const T& val)
 		{
 			heap_arr_.push_back(val);
 			std::push_heap(heap_arr_.begin(), heap_arr_.end(), Comp());
 		}
 
-		T Pop()
+		T pop()
 		{
 			std::pop_heap(heap_arr_.begin(), heap_arr_.end(), Comp());
 			T back_save = heap_arr_.back();
@@ -36,10 +36,10 @@ namespace yxp_utility
 		}
 
 		size_t size() { return heap_arr_.size(); }
-
+		bool empty() { return heap_arr_.empty(); }
 	private:
 		std::vector<T> heap_arr_;
-		void InitHeap()
+		void initHeap()
 		{
 			std::make_heap(heap_arr_.begin(), heap_arr_.end(), Comp());
 		}

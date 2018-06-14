@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "YXPCommonTest", "YXPCommonTest\YXPCommonTest.vcxproj", "{C76C9FDA-FB7D-4731-84E7-A5749C630EF4}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{08ADD046-9201-4A83-B7B6-0BE122EE47F0}"
 	ProjectSection(SolutionItems) = preProject
 		YXPUtility = YXPUtility
@@ -29,6 +27,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utilities", "Utilities", "{
 		Utilities\YXPFileIO.h = Utilities\YXPFileIO.h
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "YXPUtilityTest", "YXPUtilityTest\YXPUtilityTest.vcxproj", "{5322BDA3-123E-4ED4-811D-068C66A26B59}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -37,14 +37,14 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C76C9FDA-FB7D-4731-84E7-A5749C630EF4}.Debug|x64.ActiveCfg = Debug|x64
-		{C76C9FDA-FB7D-4731-84E7-A5749C630EF4}.Debug|x64.Build.0 = Debug|x64
-		{C76C9FDA-FB7D-4731-84E7-A5749C630EF4}.Debug|x86.ActiveCfg = Debug|Win32
-		{C76C9FDA-FB7D-4731-84E7-A5749C630EF4}.Debug|x86.Build.0 = Debug|Win32
-		{C76C9FDA-FB7D-4731-84E7-A5749C630EF4}.Release|x64.ActiveCfg = Release|x64
-		{C76C9FDA-FB7D-4731-84E7-A5749C630EF4}.Release|x64.Build.0 = Release|x64
-		{C76C9FDA-FB7D-4731-84E7-A5749C630EF4}.Release|x86.ActiveCfg = Release|Win32
-		{C76C9FDA-FB7D-4731-84E7-A5749C630EF4}.Release|x86.Build.0 = Release|Win32
+		{5322BDA3-123E-4ED4-811D-068C66A26B59}.Debug|x64.ActiveCfg = Debug|x64
+		{5322BDA3-123E-4ED4-811D-068C66A26B59}.Debug|x64.Build.0 = Debug|x64
+		{5322BDA3-123E-4ED4-811D-068C66A26B59}.Debug|x86.ActiveCfg = Debug|Win32
+		{5322BDA3-123E-4ED4-811D-068C66A26B59}.Debug|x86.Build.0 = Debug|Win32
+		{5322BDA3-123E-4ED4-811D-068C66A26B59}.Release|x64.ActiveCfg = Release|x64
+		{5322BDA3-123E-4ED4-811D-068C66A26B59}.Release|x64.Build.0 = Release|x64
+		{5322BDA3-123E-4ED4-811D-068C66A26B59}.Release|x86.ActiveCfg = Release|Win32
+		{5322BDA3-123E-4ED4-811D-068C66A26B59}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

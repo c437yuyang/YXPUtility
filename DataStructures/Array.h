@@ -2,58 +2,58 @@
 #include <iostream>
 using std::ostream;
 
-namespace yxp_utility {
+namespace yxp_utility
+{
 
 	//1维数组
 	template <class T>
-	struct _1dArray {
-		_1dArray(int n) :size(n) { elem = new T[n](); } //默认初始化
-		T& operator[](int i)
+	struct Array1D
+	{
+		Array1D(size_t n) :size_(n) { elem_ = new T[n](); } //默认初始化
+		T& operator[](size_t idx)
 		{
-			if (i > size - 1 || i < 0)
-				throw std::out_of_range("下标出错");
-			return elem[i];
+			if (idx > size_ - 1 || idx < 0)
+				throw std::out_of_range("index error");
+			return elem_[idx];
 		}
 
-		const T& operator[](int i) const 
+		const T& operator[](size_t idx) const
 		{
-			if (i > size - 1 || i < 0)
-				throw std::out_of_range("下标出错");
-			return elem[i];
+			if (idx > size_ - 1 || idx < 0)
+				throw std::out_of_range("index error");
+			return elem_[idx];
 		}
 
-		~_1dArray() { delete[] elem; elem = 0; }
-		
-		_1dArray& operator=(const _1dArray<T>& rhs) 
+		~Array1D() { delete[] elem_; elem_ = 0; }
+
+		Array1D& operator=(const Array1D<T>& rhs)
 		{
-			if (elem != NULL) delete[] elem;
-			elem = new T[rhs.size];
-			memcpy(elem, rhs.elem, sizeof(T)*rhs.size);
-			size = rhs.size;
+			if (this == &rhs)
+				return *this;
+			if (elem_ != NULL) delete[] elem_;
+			elem_ = new T[rhs.size_];
+			memcpy(elem_, rhs.elem_, sizeof(T)*rhs.size_);
+			size_ = rhs.size_;
 			return *this;
 		}
 
-		_1dArray(const _1dArray<T>& rhs) 
+		Array1D(const Array1D<T>& rhs)
 		{
-			//if (elem != NULL) delete[] elem;
-			elem = new T[rhs.size];
-			memcpy(elem, rhs.elem, sizeof(T)*rhs.size);
-			size = rhs.size;
+			elem_ = new T[rhs.size_];
+			memcpy(elem_, rhs.elem_, sizeof(T)*rhs.size_);
+			size_ = rhs.size_;
 		}
 
-		T* elem; //这个类不考虑封装
-		int size;
-
+		T* elem_; //这个类不考虑封装
+		size_t size_;
 	};
 
 	//重载输出运算符
 	template<class T>
-	ostream& operator<<(ostream& out, const _1dArray<T>& arr)
+	ostream& operator<<(ostream& out, const Array1D<T>& arr)
 	{
-		for (int j = 0; j != arr.size; ++j)
-		{
+		for (int j = 0; j != arr.size_; ++j)
 			out << arr[j] << " ";
-		}
 		out << endl;
 		return out;
 	}
@@ -61,8 +61,8 @@ namespace yxp_utility {
 	//2维数组，提供两个版本，这个版本内部用二维数组，方便[][]操作
 #pragma region 内部二维数组实现版本
 	//template <class T>
-	//struct _2dArray {
-	//	_2dArray(int m, int n) :rows(m), cols(n)
+	//struct Array2D {
+	//	Array2D(int m, int n) :rows(m), cols(n)
 	//	{
 	//		elem = new T*[m];
 	//		for (int i = 0; i != m; ++i)
@@ -72,7 +72,7 @@ namespace yxp_utility {
 	//	}
 	//	T* operator[](int i) { return elem[i]; }
 	//	const T* operator[](int i) const { return elem[i]; }
-	//	~_2dArray()
+	//	~Array2D()
 	//	{
 	//		for (int i = 0; i != rows; ++i)
 	//		{
@@ -88,7 +88,7 @@ namespace yxp_utility {
 
 
 	//template<class T>
-	//ostream& operator<<(ostream& out, const _2dArray<T>& mat)
+	//ostream& operator<<(ostream& out, const Array2D<T>& mat)
 	//{
 	//	for (int i = 0; i != mat.rows; ++i)
 	//	{
@@ -102,60 +102,58 @@ namespace yxp_utility {
 	//}
 #pragma endregion
 
+	//一维数组实现版本
 	template <class T>
-	struct _2dArray {
-		_2dArray(int m, int n) :rows(m), cols(n)
+	struct Array2D
+	{
+		Array2D(int m, int n) :rows_(m), cols_(n)
 		{
-			elem = new T[m*n]();
+			elem_ = new T[m*n]();
 		}
-		T* operator[](int i) { return &elem[i*cols]; } //但是这种方法还是没法检查两个参数的合法性，其实也不用自己检查，自己检查也就是抛个异常，反正你越界，系统也会抛出异常
-		const T* operator[](int i) const { return &elem[i*cols]; }
-		~_2dArray()
+		T* operator[](int i) { return &elem_[i*cols_]; } //但是这种方法还是没法检查两个参数的合法性，其实也不用自己检查，自己检查也就是抛个异常，反正你越界，系统也会抛出异常
+		const T* operator[](int i) const { return &elem_[i*cols_]; }
+		~Array2D()
 		{
-			delete[]elem;
-			elem = 0;
+			delete[]elem_;
+			elem_ = 0;
 		}
 
-		_2dArray& operator=(const _2dArray<T>& rhs)
+		Array2D& operator=(const Array2D<T>& rhs)
 		{
-			if (elem != NULL) delete[] elem;
-			elem = new T[rhs.rows*rhs.cols];
-			memcpy(elem, rhs.elem, sizeof(T)*rhs.rows*rhs.cols);
-			rows = rhs.rows;
-			cols = rhs.cols;
+			if (elem_ != NULL) delete[] elem_;
+			elem_ = new T[rhs.rows_*rhs.cols_];
+			memcpy(elem_, rhs.elem_, sizeof(T)*rhs.rows_*rhs.cols_);
+			rows_ = rhs.rows_;
+			cols_ = rhs.cols_;
 			return *this;
 		}
 
-		_2dArray(const _2dArray<T>& rhs)
+		Array2D(const Array2D<T>& rhs)
 		{
 			//if (elem != NULL) delete[] elem;
-			elem = new T[rhs.rows*rhs.cols];
-			memcpy(elem, rhs.elem, sizeof(T)*rhs.rows*rhs.cols);
-			rows = rhs.rows;
-			cols = rhs.cols;
+			elem_ = new T[rhs.rows_*rhs.cols_];
+			memcpy(elem_, rhs.elem_, sizeof(T)*rhs.rows_*rhs.cols_);
+			rows_ = rhs.rows_;
+			cols_ = rhs.cols_;
 		}
 
 
-		T* elem;
-		int rows;
-		int cols;
+		T* elem_;
+		size_t rows_;
+		size_t cols_;
 	};
 
 
 	template<class T>
-	ostream& operator<<(ostream& out, const _2dArray<T>& mat)
+	ostream& operator<<(ostream& out, const Array2D<T>& mat)
 	{
-		for (int i = 0; i != mat.rows; ++i)
+		for (size_t i = 0; i != mat.rows_; ++i)
 		{
-			for (int j = 0; j != mat.cols; ++j)
-			{
+			for (size_t j = 0; j != mat.cols_; ++j)
 				out << mat[i][j] << " ";
-			}
 			out << endl;
 		}
 		return out;
 	}
-
-
 }
 

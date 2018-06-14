@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{C76C9FDA-FB7D-4731-84E7-A5749C630EF4}</ProjectGuid>
+    <ProjectGuid>{5322BDA3-123E-4ED4-811D-068C66A26B59}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>YXPCommonTest</RootNamespace>
+    <RootNamespace>YXPUtilityTest</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -150,7 +150,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="YXPCommonTest.cpp" />
+    <ClCompile Include="YXPUtilityTest.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
