@@ -1,3 +1,6 @@
+#ifndef HEAP_H
+#define HEAP_H
+
 #include <algorithm>
 #include <vector>
 #include <functional>
@@ -46,3 +49,5 @@ namespace yxp_utility
 	};
 
 }
+
+#endif

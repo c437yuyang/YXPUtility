@@ -13,6 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataStructures", "DataStruc
 		DataStructures\Array.h = DataStructures\Array.h
 		DataStructures\binarytreenode.h = DataStructures\binarytreenode.h
 		DataStructures\Heap.h = DataStructures\Heap.h
+		DataStructures\MaxMinQueue.h = DataStructures\MaxMinQueue.h
 		DataStructures\MaxMinStack.h = DataStructures\MaxMinStack.h
 	EndProjectSection
 EndProject
@@ -24,6 +25,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utilities", "Utilities", "{
 		Utilities\StrAlgo.h = Utilities\StrAlgo.h
 		Utilities\StrCvt.cpp = Utilities\StrCvt.cpp
 		Utilities\StrCvt.h = Utilities\StrCvt.h
+		Utilities\Timer.h = Utilities\Timer.h
 		Utilities\YXPFileIO.cpp = Utilities\YXPFileIO.cpp
 		Utilities\YXPFileIO.h = Utilities\YXPFileIO.h
 	EndProjectSection

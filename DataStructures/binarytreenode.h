@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _BINARYTREENODE_H_
+#define _BINARYTREENODE_H_
 #include <memory>
 #include <string>
 #include <iostream>
@@ -115,4 +116,4 @@ string getSpace(int num) {
 	}
 	return buf;
 }
-#pragma endregion
+#endif

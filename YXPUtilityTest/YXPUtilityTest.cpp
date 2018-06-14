@@ -61,7 +61,7 @@ TEST(MaxMinStackTest, demo1)
 
 TEST(MaxMinStackTest, demo2)
 {
-	MaxMinStack<int,std::greater<int>> maxStack;
+	MaxMinStack<int, std::greater<int>> maxStack;
 	maxStack.push(4);
 	maxStack.push(1);
 
@@ -79,6 +79,28 @@ TEST(MaxMinStackTest, demo2)
 	EXPECT_EQ(maxStack.top(), 3);
 	EXPECT_EQ(maxStack.pop(), 3);
 	EXPECT_EQ(maxStack.maxOrMin(), 10);
+}
+
+
+TEST(MaxMinQueueTest, demo1)
+{
+	MaxMinQueue<int, std::greater<int>> maxQueue;
+
+	maxQueue.push(5);
+	maxQueue.push(4);
+	maxQueue.push(6);
+	maxQueue.push(3);
+
+	EXPECT_EQ(maxQueue.max(), 6);
+	EXPECT_EQ(maxQueue.pop(), 5);
+	EXPECT_EQ(maxQueue.max(), 6);
+	EXPECT_EQ(maxQueue.top(), 4);
+	EXPECT_EQ(maxQueue.pop(), 4);
+	EXPECT_EQ(maxQueue.max(), 6);
+	EXPECT_EQ(maxQueue.pop(), 6);
+	EXPECT_EQ(maxQueue.max(), 3);
+	EXPECT_EQ(maxQueue.pop(), 3);
+
 }
 
 TEST(HeapTest, demo1)

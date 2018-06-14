@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ARRAY_H
+#define ARRAY_H
 #include <iostream>
 using std::ostream;
 
@@ -157,3 +158,4 @@ namespace yxp_utility
 	}
 }
 
+#endif

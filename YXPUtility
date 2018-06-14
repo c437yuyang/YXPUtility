@@ -2,7 +2,7 @@
 #include "DataStructures/Heap.h"
 #include "DataStructures/binarytreenode.h"
 #include "DataStructures/MaxMinStack.h"
-
+#include "DataStructures/MaxMinQueue.h"
 #include "Utilities/ArrayHelper.h"
 #include "Utilities/RandomHelper.h"
 #include "Utilities/StrAlgo.h"

@@ -1,3 +1,5 @@
+#ifndef _MAXMINSTACK_H_
+#define _MAXMINSTACK_H_
 #include <stack>
 #include <algorithm>
 #include <functional>
@@ -64,3 +66,4 @@ namespace yxp_utility
 		std::stack<T> max_min_stack_;
 	};
 }
+#endif
