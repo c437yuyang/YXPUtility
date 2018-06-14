@@ -37,6 +37,49 @@ TEST(Array2DTest, demo1)
 	EXPECT_EQ(memcmp(arr2d.elem_, arr2d_2.elem_, 10 * 10 * 4), 0);
 }
 
+TEST(MaxMinStackTest, demo1)
+{
+	MaxMinStack<int> minStack;
+	minStack.push(1);
+	minStack.push(4);
+
+	EXPECT_EQ(minStack.maxOrMin(), 1);
+	EXPECT_EQ(minStack.top(), 4);
+	EXPECT_EQ(minStack.pop(), 4);
+	EXPECT_EQ(minStack.maxOrMin(), 1);
+	EXPECT_EQ(minStack.top(), 1);
+	EXPECT_EQ(minStack.pop(), 1);
+	EXPECT_EQ(minStack.empty(), true);
+	EXPECT_EQ(minStack.size(), 0);
+	minStack.push(10);
+	minStack.push(3);
+	EXPECT_EQ(minStack.maxOrMin(), 3);
+	EXPECT_EQ(minStack.top(), 3);
+	EXPECT_EQ(minStack.pop(), 3);
+	EXPECT_EQ(minStack.maxOrMin(), 10);
+}
+
+TEST(MaxMinStackTest, demo2)
+{
+	MaxMinStack<int,std::greater<int>> maxStack;
+	maxStack.push(4);
+	maxStack.push(1);
+
+	EXPECT_EQ(maxStack.maxOrMin(), 4);
+	EXPECT_EQ(maxStack.top(), 1);
+	EXPECT_EQ(maxStack.pop(), 1);
+	EXPECT_EQ(maxStack.maxOrMin(), 4);
+	EXPECT_EQ(maxStack.top(), 4);
+	EXPECT_EQ(maxStack.pop(), 4);
+	EXPECT_EQ(maxStack.empty(), true);
+	EXPECT_EQ(maxStack.size(), 0);
+	maxStack.push(10);
+	maxStack.push(3);
+	EXPECT_EQ(maxStack.maxOrMin(), 10);
+	EXPECT_EQ(maxStack.top(), 3);
+	EXPECT_EQ(maxStack.pop(), 3);
+	EXPECT_EQ(maxStack.maxOrMin(), 10);
+}
 
 TEST(HeapTest, demo1)
 {
@@ -81,8 +124,6 @@ TEST(RandomHelperTest, demo1)
 	yxp_utility::ArrayHelper::printMatrix(p, 5, 5);
 	assert(v.size() == 5);
 }
-
-
 
 
 int main(int argc, char* argv[])
