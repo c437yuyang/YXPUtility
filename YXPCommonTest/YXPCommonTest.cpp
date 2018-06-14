@@ -1,9 +1,8 @@
 #include <gtest/gtest.h>
-#include <YXPCommon.h>
+#include <YXPUtility.h>
 using namespace yxp_utility;
 TEST(HeapTest, demo1)
 {
-	
 	Heap<int> h;
 	h.Push(1);
 	h.Push(2);
@@ -35,7 +34,7 @@ TEST(HeapTest, demo3)
 	EXPECT_EQ(h.Pop(), 1);
 }
 
-TEST(RandomHelperTest, demo1) 
+TEST(RandomHelperTest, demo1)
 {
 	yxp_utility::RandomHelper::initSeed();
 	auto v = yxp_utility::RandomHelper::randomMatrix(5, 5, -10, 10);

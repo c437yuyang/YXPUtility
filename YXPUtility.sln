@@ -7,15 +7,26 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "YXPCommonTest", "YXPCommonT
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{08ADD046-9201-4A83-B7B6-0BE122EE47F0}"
 	ProjectSection(SolutionItems) = preProject
-		Array.h = Array.h
-		binarytreenode.h = binarytreenode.h
-		StrAlgo.cpp = StrAlgo.cpp
-		StrAlgo.h = StrAlgo.h
-		StrCvt.cpp = StrCvt.cpp
-		StrCvt.h = StrCvt.h
-		YXPCommon.h = YXPCommon.h
-		YXPFileIO.cpp = YXPFileIO.cpp
-		YXPFileIO.h = YXPFileIO.h
+		YXPUtility.h = YXPUtility.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataStructures", "DataStructures", "{CAA255DD-D4A2-4CFD-96C5-A4C22EB7CA07}"
+	ProjectSection(SolutionItems) = preProject
+		DataStructures\Array.h = DataStructures\Array.h
+		DataStructures\binarytreenode.h = DataStructures\binarytreenode.h
+		DataStructures\Heap.h = DataStructures\Heap.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utilities", "Utilities", "{E40B693E-7679-4FCE-920E-2620CE26C18A}"
+	ProjectSection(SolutionItems) = preProject
+		Utilities\ArrayHelper.h = Utilities\ArrayHelper.h
+		Utilities\RandomHelper.h = Utilities\RandomHelper.h
+		Utilities\StrAlgo.cpp = Utilities\StrAlgo.cpp
+		Utilities\StrAlgo.h = Utilities\StrAlgo.h
+		Utilities\StrCvt.cpp = Utilities\StrCvt.cpp
+		Utilities\StrCvt.h = Utilities\StrCvt.h
+		Utilities\YXPFileIO.cpp = Utilities\YXPFileIO.cpp
+		Utilities\YXPFileIO.h = Utilities\YXPFileIO.h
 	EndProjectSection
 EndProject
 Global
@@ -37,5 +48,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CAA255DD-D4A2-4CFD-96C5-A4C22EB7CA07} = {08ADD046-9201-4A83-B7B6-0BE122EE47F0}
+		{E40B693E-7679-4FCE-920E-2620CE26C18A} = {08ADD046-9201-4A83-B7B6-0BE122EE47F0}
 	EndGlobalSection
 EndGlobal

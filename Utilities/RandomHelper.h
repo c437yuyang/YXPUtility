@@ -1,100 +1,11 @@
-#include <iostream>
-#include <fstream>
 #include <random>
 #include <vector>
 #include <ctime>
 #include <cassert>
 #include <functional>
 
-#define ARRSIZE(arr) (sizeof(arr)/sizeof(arr[0]))
-
 namespace yxp_utility
 {
-	template<typename T, class Comp = std::greater<T>> //default is min heap
-	class Heap
-	{
-	public:
-		Heap() :heap_arr_() {}
-		Heap(const std::vector<T> & v)
-			: heap_arr_(v)
-		{
-			InitHeap();
-		}
-
-		Heap(const T*arr, size_t n)
-			: heap_arr_(arr, arr + n)
-		{
-			InitHeap();
-		}
-
-		template<class T>
-		void Push(const T& val)
-		{
-			heap_arr_.push_back(val);
-			std::push_heap(heap_arr_.begin(), heap_arr_.end(), Comp());
-		}
-
-		T Pop()
-		{
-			std::pop_heap(heap_arr_.begin(), heap_arr_.end(), Comp());
-			T back_save = heap_arr_.back();
-			heap_arr_.pop_back();
-			return back_save;
-		}
-
-		size_t size() { return heap_arr_.size(); }
-
-	private:
-		std::vector<T> heap_arr_;
-		void InitHeap()
-		{
-			std::make_heap(heap_arr_.begin(), heap_arr_.end(), Comp());
-		}
-
-	};
-
-	class ArrayHelper
-	{
-	public:
-		template<class T>
-		inline static void printArr(const T*arr, size_t n, char delimeter = ' ', bool endWithNewLine = true)
-		{
-			for (size_t i = 0; i != n; ++i)
-				std::cout << arr[i] << delimeter;
-			if (endWithNewLine)
-				std::cout << std::endl;
-		}
-
-		template<class T>
-		inline static void printArr(const std::vector<T> &arr, char delimeter = ' ', bool endWithNewLine = true)
-		{
-			std::for_each(arr.begin(), arr.end(), [delimeter](const T&val) { std::cout << val << delimeter; });
-			if (endWithNewLine)
-				std::cout << std::endl;
-		}
-
-		template<class T>
-		inline static void printMatrix(const std::vector<std::vector<T>> &mat, char delimeter = ' ')
-		{
-			std::for_each(mat.begin(), mat.end(), [delimeter](const std::vector<T>&v) { printArr(v, delimeter, true); });
-		}
-
-		template<class T>
-		inline static void printMatrix(const T* mat, size_t rows, size_t cols, char delimeter = ' ', bool endWithNewLine = true)
-		{
-			//std::for_each(mat, mat + rows, [delimeter, cols](const T*arr) { printArr(arr, cols, delimeter, true); });
-			for (size_t i = 0; i < rows; ++i)
-			{
-				for (size_t j = 0; j < cols; ++j)
-					std::cout << mat[i*cols + j] << delimeter;
-				std::cout << std::endl;
-			}
-			if (endWithNewLine)
-				std::cout << std::endl;
-		}
-
-	};
-
 	class RandomHelper
 	{
 	public:
@@ -110,7 +21,7 @@ namespace yxp_utility
 
 
 		/*
-			return a random integer between [m,n)
+		return a random integer between [m,n)
 		*/
 		inline static int randomInt(int min, int max)
 		{
@@ -130,7 +41,7 @@ namespace yxp_utility
 		}
 
 		/*
-			return a random float number with digit fraction part
+		return a random float number with digit fraction part
 		*/
 		inline static double rand0to1(int digit = 3)
 		{
@@ -139,7 +50,7 @@ namespace yxp_utility
 		}
 
 		/*
-			get random integer array,do not allocate memory
+		get random integer array,do not allocate memory
 		*/
 		inline static void randomArray(int *arr, size_t size, int min, int max)
 		{
@@ -149,7 +60,7 @@ namespace yxp_utility
 		}
 
 		/*
-			get random integer vector, will clear the input vector
+		get random integer vector, will clear the input vector
 		*/
 		inline static void randomArray(std::vector<int>& arr, size_t size, int min, int max)
 		{
@@ -160,7 +71,7 @@ namespace yxp_utility
 		}
 
 		/*
-			get random integer vector
+		get random integer vector
 		*/
 		inline static std::vector<int> randomArray(size_t size, int min, int max)
 		{
@@ -171,7 +82,7 @@ namespace yxp_utility
 
 
 		/*
-			get random integer matrix using 1D Array,do not allocate memory
+		get random integer matrix using 1D Array,do not allocate memory
 		*/
 		inline static void randomMatrix(int * mat, size_t rows, size_t cols, int min, int max)
 		{
@@ -183,7 +94,7 @@ namespace yxp_utility
 
 
 		/*
-			get random integer matrix using std::vector<std::vector<int>>
+		get random integer matrix using std::vector<std::vector<int>>
 		*/
 		inline static std::vector<std::vector<int>> randomMatrix(size_t rows, size_t cols, int min, int max)
 		{
@@ -205,6 +116,4 @@ namespace yxp_utility
 		static bool seed_set_;
 	};
 	bool RandomHelper::seed_set_ = false;
-
-
 }
