@@ -1,4 +1,5 @@
-#pragma once
+#ifndef STRALGO_H
+#define STRALGO_H
 #include <string>
 #include <vector>
 #include <sstream>
@@ -145,7 +146,7 @@ namespace yxp_utility
 	{
 		if (strs.empty())
 			return "";
-		string res = "";
+		std::string res = "";
 		for (size_t i = 0; i < strs.size(); ++i)
 		{
 			if (pred(strs[i]))
@@ -219,7 +220,7 @@ namespace yxp_utility
 
 	std::string StrAlgo::replaceAll(const std::string& str, const std::string& from, const std::string& to)
 	{
-		if (str.find(from) == string::npos)
+		if (str.find(from) == std::string::npos)
 			return str;
 		std::string res = str;
 		std::string::size_type pos = res.find(from);
@@ -228,14 +229,14 @@ namespace yxp_utility
 			res = res.replace(pos, from.length(), to);
 			pos = res.find(from, pos);
 		}
-		while (pos != string::npos);
+		while (pos != std::string::npos);
 		return res;
 	}
 
 
 	std::string StrAlgo::replaceFirst(const std::string& str, const std::string& from, const std::string& to)
 	{
-		if (str.find(from) == string::npos)
+		if (str.find(from) == std::string::npos)
 			return str;
 		std::string res = str;
 		std::string::size_type pos = res.find(from);
@@ -254,3 +255,4 @@ namespace yxp_utility
 		return replaceAll(str, from, "");
 	}
 }
+#endif

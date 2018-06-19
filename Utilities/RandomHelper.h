@@ -1,3 +1,6 @@
+#ifndef RANDOMHELPER_H
+#define RANDOMHELPER_H
+
 #include <random>
 #include <vector>
 #include <ctime>
@@ -117,3 +120,4 @@ namespace yxp_utility
 	};
 	bool RandomHelper::seed_set_ = false;
 }
+#endif

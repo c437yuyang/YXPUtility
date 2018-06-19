@@ -1,3 +1,6 @@
+#ifndef ARRAYHELPER_H
+#define ARRAYHELPER_H
+
 #include <vector>
 #include <iostream>
 #include <algorithm>
@@ -49,3 +52,4 @@ namespace yxp_utility
 	};
 }
 
+#endif

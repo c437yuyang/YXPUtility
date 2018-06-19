@@ -150,6 +150,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ArrayTest.cpp" />
+    <ClCompile Include="HeapTest.cpp" />
+    <ClCompile Include="MaxMinQueueTest.cpp" />
+    <ClCompile Include="MaxMinStackTest.cpp" />
+    <ClCompile Include="RandomHelperTest.cpp" />
+    <ClCompile Include="StrAlgoTest.cpp" />
     <ClCompile Include="YXPUtilityTest.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

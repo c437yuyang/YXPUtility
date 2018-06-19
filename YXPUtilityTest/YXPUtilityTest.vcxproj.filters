@@ -13,10 +13,34 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="源文件\UtilitiesTest">
+      <UniqueIdentifier>{363c7d50-d907-4278-8a08-4a3158ab408f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\DataStructuresTest">
+      <UniqueIdentifier>{61e94cd9-c129-4c43-8331-2d181e128ebe}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="YXPUtilityTest.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MaxMinStackTest.cpp">
+      <Filter>源文件\DataStructuresTest</Filter>
+    </ClCompile>
+    <ClCompile Include="ArrayTest.cpp">
+      <Filter>源文件\DataStructuresTest</Filter>
+    </ClCompile>
+    <ClCompile Include="RandomHelperTest.cpp">
+      <Filter>源文件\UtilitiesTest</Filter>
+    </ClCompile>
+    <ClCompile Include="MaxMinQueueTest.cpp">
+      <Filter>源文件\DataStructuresTest</Filter>
+    </ClCompile>
+    <ClCompile Include="HeapTest.cpp">
+      <Filter>源文件\DataStructuresTest</Filter>
+    </ClCompile>
+    <ClCompile Include="StrAlgoTest.cpp">
+      <Filter>源文件\UtilitiesTest</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
