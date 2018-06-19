@@ -21,7 +21,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utilities", "Utilities", "{
 	ProjectSection(SolutionItems) = preProject
 		Utilities\ArrayHelper.h = Utilities\ArrayHelper.h
 		Utilities\RandomHelper.h = Utilities\RandomHelper.h
-		Utilities\StrAlgo.cpp = Utilities\StrAlgo.cpp
 		Utilities\StrAlgo.h = Utilities\StrAlgo.h
 		Utilities\StrCvt.cpp = Utilities\StrCvt.cpp
 		Utilities\StrCvt.h = Utilities\StrCvt.h

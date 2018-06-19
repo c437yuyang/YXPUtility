@@ -1,4 +1,4 @@
-#include "stdafx.h"
+//#include "stdafx.h"
 #include "StrCvt.h"
 using yxp_utility::StrCvt;
 void StrCvt::Convert(const string &str, CString &cstr)

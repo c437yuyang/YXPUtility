@@ -7,6 +7,7 @@ using std::string;
 using std::shared_ptr;
 using std::endl;
 using std::cout;
+#define USE_INT
 
 
 #pragma region shared_ptr模板版本
@@ -45,43 +46,78 @@ struct iBinaryTreeNode
 #pragma endregion
 
 
-
 #pragma region 普通指针模板版本
+#ifdef USE_TEMP
 template<class T>
 struct Node
 {
-	T elem;
+	T val;
 	Node<T>* left;
 	Node<T>* right;
 
-	Node(const T&elem, const Node<T>* left, const Node<T>* right) :
-		elem(elem), left(left), right(right) {}
+	Node(const T&val, const Node<T>* left, const Node<T>* right) :
+		val(val), left(left), right(right) {}
 
-	Node(const T&elem) :
-		elem(elem), left(NULL), right(NULL) {}
-
+	Node(const T&val) :
+		val(val), left(NULL), right(NULL) {}
 };
+
+template<class T<
+void DestoyTree(Node<T> *head)
+{
+	if (head == nullptr)
+		return;
+	Node<T> *left = head->left;
+	Node<T> *right = head->right;
+
+	delete head;
+	head = nullptr;
+	DestoyTree(left);
+	DestoyTree(right);
+}
+#endif
 #pragma endregion
 
 
 #pragma region 普通指针int版本
-struct iNode
+#ifdef USE_INT
+struct Node
 {
-	int elem;
-	iNode* left;
-	iNode* right;
+	int val;
+	Node* left;
+	Node* right;
 
-	iNode(int elem, iNode* left, iNode* right) :
-		elem(elem), left(left), right(right) {}
+	Node(int val, Node* left, Node* right) :
+		val(val), left(left), right(right) {}
 
-	iNode(int elem) :
-		elem(elem), left(NULL), right(NULL) {}
+	Node(int val) :
+		val(val), left(NULL), right(NULL) {}
 };
+
+void DestoyTree(Node *head)
+{
+	if (head == nullptr)
+		return;
+	Node *left = head->left;
+	Node *right = head->right;
+
+	delete head;
+	head = nullptr;
+	DestoyTree(left);
+	DestoyTree(right);
+}
+#endif
 #pragma endregion
 
 
 #pragma region 打印一棵树的版本，自行替换下面这个typedef就可以针对不同的版本了
+#ifdef USE_INT
+typedef Node* ipBTN;
+#else
 typedef shared_ptr<BinaryTreeNode<int>> ipBTN;
+#endif
+
+
 void printTree(ipBTN head);
 void printInOrder(ipBTN head, int height, string to, int len);
 string getSpace(int num);
@@ -98,7 +134,7 @@ void printInOrder(ipBTN head, int height, string to, int len) {
 	}
 	printInOrder(head->right, height + 1, "v", len);
 	char buf[10];
-	_itoa_s(head->elem, buf, 10);
+	_itoa_s(head->val, buf, 10);
 	string val = to + buf + to;
 	int lenM = val.length();
 	int lenL = (len - lenM) / 2;
@@ -117,3 +153,18 @@ string getSpace(int num) {
 	return buf;
 }
 #endif
+
+//常用的例子二叉树
+Node *GetExampleTree()
+{
+	Node* head1 = new Node(1);
+	head1->left = new Node(2);
+	head1->right = new Node(3);
+	head1->left->left = new Node(4);
+	head1->left->right = new Node(5);
+	head1->right->left = new Node(6);
+	head1->right->right = new Node(7);
+	head1->left->left->left = new Node(8);
+	head1->right->left->right = new Node(9);
+	return head1;
+}
