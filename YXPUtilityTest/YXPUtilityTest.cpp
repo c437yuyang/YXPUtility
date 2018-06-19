@@ -258,6 +258,35 @@ TEST(StrAlgoTest, TrimEndTest)
 	EXPECT_EQ(StrAlgo::trimEnd(str, "abaaaaaaa"), str);
 }
 
+TEST(StrAlgoTest, TrimTest)
+{
+	std::string str = "eeebcdeeeee";
+	EXPECT_EQ(StrAlgo::trim(str, "e"), "bcd");
+}
+
+TEST(StrAlgoTest, ReplaceAllTest)
+{
+	std::string str = "bcdeeee";
+	EXPECT_EQ(StrAlgo::replaceAll(str, "e", "1"), "bcd1111");
+	EXPECT_EQ(StrAlgo::replaceAll(str, "e", "22"), "bcd22222222");
+	EXPECT_EQ(StrAlgo::replaceAll(str, "ee", "1"), "bcd11");
+	EXPECT_EQ(StrAlgo::replaceAll(str, "ee", ""), "bcd");
+	EXPECT_EQ(StrAlgo::replaceAll(str, "aee", "1"), str);
+}
+TEST(StrAlgoTest, ReplaceFirstTest)
+{
+	std::string str = "bcdeeee";
+	EXPECT_EQ(StrAlgo::replaceFirst(str, "e", "1"), "bcd1eee");
+	EXPECT_EQ(StrAlgo::replaceFirst(str, "e", "11"), "bcd11eee");
+	EXPECT_EQ(StrAlgo::replaceFirst(str, "ea", "11"), str);
+}
+
+TEST(StrAlgoTest, EraseAllTest)
+{
+	std::string str = "bcdeeee";
+	EXPECT_EQ(StrAlgo::eraseAll(str, "e"), "bcd");
+}
+
 
 int main(int argc, char* argv[])
 {

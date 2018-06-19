@@ -41,17 +41,39 @@ namespace yxp_utility
 
 
 		/// <summary>
-		/// 删除尾部appendix
+		/// 删除首部prefix
 		/// </summary>
 		static std::string trimStart(const std::string& str, const std::string& prefix);
-
 
 		/// <summary>
 		/// 删除尾部appendix
 		/// </summary>
 		static std::string trimEnd(const std::string& str, const std::string& appendix);
 
+		/// <summary>
+		/// 删除首部和尾部的del
+		/// </summary>
+		static std::string trim(const std::string& str, const std::string& del);
 
+		/// <summary>
+		/// 替换全部from为to，若未找到，直接返回
+		/// </summary>
+		static std::string replaceAll(const std::string& str, const std::string& from, const std::string& to);
+
+		/// <summary>
+		/// 替换第一个from为to，若未找到，直接返回
+		/// </summary>
+		static std::string replaceFirst(const std::string& str, const std::string& from, const std::string& to);
+
+		/// <summary>
+		/// 替换第一个from为""，若未找到，直接返回
+		/// </summary>
+		static std::string eraseFirst(const std::string& str, const std::string& from);
+
+		/// <summary>
+		/// 替换全部from为""，若未找到，直接返回
+		/// </summary>
+		static std::string eraseAll(const std::string& str, const std::string& from);
 
 	};
 }
@@ -134,7 +156,7 @@ namespace yxp_utility
 			}
 		}
 		if (delim != '\0')
-			res = trimEnd(res,std::string(1,delim));
+			res = trimEnd(res, std::string(1, delim));
 		return res;
 	}
 
@@ -184,4 +206,51 @@ namespace yxp_utility
 		return res;
 	}
 
+	std::string StrAlgo::trim(const std::string& str, const std::string& del)
+	{
+		std::string res = str;
+		if (endsWith(str, del))
+			 res = trimEnd(res,del);
+		
+		if (startsWith(str, del))
+			 res = trimStart(res, del);
+		return res;
+	}
+
+	std::string StrAlgo::replaceAll(const std::string& str, const std::string& from, const std::string& to)
+	{
+		if (str.find(from) == string::npos)
+			return str;
+		std::string res = str;
+		std::string::size_type pos = res.find(from);
+		do
+		{
+			res = res.replace(pos, from.length(), to);
+			pos = res.find(from, pos);
+		}
+		while (pos != string::npos);
+		return res;
+	}
+
+
+	std::string StrAlgo::replaceFirst(const std::string& str, const std::string& from, const std::string& to)
+	{
+		if (str.find(from) == string::npos)
+			return str;
+		std::string res = str;
+		std::string::size_type pos = res.find(from);
+		res = res.replace(pos, from.length(), to);
+		return res;
+	}
+
+
+	std::string StrAlgo::eraseFirst(const std::string& str, const std::string& from)
+	{
+		return replaceFirst(str,from,"");
+	}
+
+	std::string StrAlgo::eraseAll(const std::string& str, const std::string& from)
+	{
+		return replaceAll(str, from, "");
+	}
 }
