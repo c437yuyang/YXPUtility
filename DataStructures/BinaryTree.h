@@ -1,5 +1,5 @@
-#ifndef _BINARYTREENODE_H_
-#define _BINARYTREENODE_H_
+#ifndef BINARYTREE_H_
+#define BINARYTREE_H_
 #include <memory>
 #include <string>
 #include <iostream>
@@ -84,10 +84,10 @@ void DestoyTree(Node<T> *head)
 
 struct TreeNode
 {
-	int elem;
+	int val;
 	TreeNode*left;
 	TreeNode*right;
-	TreeNode(int val) :elem(val), left(nullptr), right(nullptr) {}
+	TreeNode(int val) :val(val), left(nullptr), right(nullptr) {}
 };
 
 void DestoyTree(TreeNode *head)
