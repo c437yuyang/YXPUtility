@@ -23,7 +23,7 @@ struct BinaryTreeNode
 		elem(elem), left(left), right(right) {}
 
 	BinaryTreeNode(const T&elem) :
-		elem(elem), left(NULL), right(NULL) {}
+		elem(elem), left(nullptr), right(nullptr) {}
 
 };
 #pragma endregion
@@ -41,7 +41,7 @@ struct iBinaryTreeNode
 		elem(elem), left(left), right(right) {}
 
 	iBinaryTreeNode(const int elem) :
-		elem(elem), left(NULL), right(NULL) {}
+		elem(elem), left(nullptr), right(nullptr) {}
 };
 #pragma endregion
 
@@ -59,7 +59,7 @@ struct Node
 		val(val), left(left), right(right) {}
 
 	Node(const T&val) :
-		val(val), left(NULL), right(NULL) {}
+		val(val), left(nullptr), right(nullptr) {}
 };
 
 template<class T<
@@ -81,38 +81,50 @@ void DestoyTree(Node<T> *head)
 
 #pragma region 普通指针int版本
 #ifdef USE_INT
-struct Node
+
+struct TreeNode
 {
-	int val;
-	Node* left;
-	Node* right;
-
-	Node(int val, Node* left, Node* right) :
-		val(val), left(left), right(right) {}
-
-	Node(int val) :
-		val(val), left(NULL), right(NULL) {}
+	int elem;
+	TreeNode*left;
+	TreeNode*right;
+	TreeNode(int val) :elem(val), left(nullptr), right(nullptr) {}
 };
 
-void DestoyTree(Node *head)
+void DestoyTree(TreeNode *head)
 {
 	if (head == nullptr)
 		return;
-	Node *left = head->left;
-	Node *right = head->right;
+	TreeNode *left = head->left;
+	TreeNode *right = head->right;
 
 	delete head;
 	head = nullptr;
 	DestoyTree(left);
 	DestoyTree(right);
 }
+
+//常用的例子二叉树
+TreeNode *GetExampleTree()
+{
+	TreeNode* head = new TreeNode(1);
+	head->left = new TreeNode(2);
+	head->right = new TreeNode(3);
+	head->left->left = new TreeNode(4);
+	head->left->right = new TreeNode(5);
+	head->right->left = new TreeNode(6);
+	head->right->right = new TreeNode(7);
+	head->left->left->left = new TreeNode(8);
+	head->right->left->right = new TreeNode(9);
+	return head;
+}
+
 #endif
 #pragma endregion
 
 
 #pragma region 打印一棵树的版本，自行替换下面这个typedef就可以针对不同的版本了
 #ifdef USE_INT
-typedef Node* ipBTN;
+typedef TreeNode* ipBTN;
 #else
 typedef shared_ptr<BinaryTreeNode<int>> ipBTN;
 #endif
@@ -129,7 +141,7 @@ void printTree(ipBTN head) {
 }
 
 void printInOrder(ipBTN head, int height, string to, int len) {
-	if (head == NULL) {
+	if (head == nullptr) {
 		return;
 	}
 	printInOrder(head->right, height + 1, "v", len);
@@ -154,17 +166,3 @@ string getSpace(int num) {
 }
 #endif
 
-//常用的例子二叉树
-Node *GetExampleTree()
-{
-	Node* head1 = new Node(1);
-	head1->left = new Node(2);
-	head1->right = new Node(3);
-	head1->left->left = new Node(4);
-	head1->left->right = new Node(5);
-	head1->right->left = new Node(6);
-	head1->right->right = new Node(7);
-	head1->left->left->left = new Node(8);
-	head1->right->left->right = new Node(9);
-	return head1;
-}

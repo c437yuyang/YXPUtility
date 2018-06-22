@@ -31,7 +31,7 @@ namespace yxp_utility
 		{
 			if (this == &rhs)
 				return *this;
-			if (elem_ != NULL) delete[] elem_;
+			if (elem_ != nullptr) delete[] elem_;
 			elem_ = new T[rhs.size_];
 			memcpy(elem_, rhs.elem_, sizeof(T)*rhs.size_);
 			size_ = rhs.size_;
@@ -121,7 +121,7 @@ namespace yxp_utility
 
 		Array2D& operator=(const Array2D<T>& rhs)
 		{
-			if (elem_ != NULL) delete[] elem_;
+			if (elem_ != nullptr) delete[] elem_;
 			elem_ = new T[rhs.rows_*rhs.cols_];
 			memcpy(elem_, rhs.elem_, sizeof(T)*rhs.rows_*rhs.cols_);
 			rows_ = rhs.rows_;

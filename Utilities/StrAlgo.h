@@ -39,8 +39,6 @@ namespace yxp_utility
 		/// </summary>
 		static bool startsWith(const std::string& str, const std::string& prefix);
 
-
-
 		/// <summary>
 		/// É¾³ýÊ×²¿prefix
 		/// </summary>
@@ -233,7 +231,6 @@ namespace yxp_utility
 		return res;
 	}
 
-
 	std::string StrAlgo::replaceFirst(const std::string& str, const std::string& from, const std::string& to)
 	{
 		if (str.find(from) == std::string::npos)
@@ -243,7 +240,6 @@ namespace yxp_utility
 		res = res.replace(pos, from.length(), to);
 		return res;
 	}
-
 
 	std::string StrAlgo::eraseFirst(const std::string& str, const std::string& from)
 	{
