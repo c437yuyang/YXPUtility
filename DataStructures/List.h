@@ -2,6 +2,7 @@
 #define LIST_H
 
 #include <iostream>
+#include <vector>
 namespace yxp_utility
 {
 	struct ListNode
@@ -162,6 +163,95 @@ namespace yxp_utility
 		return newHead;
 	}
 
+	/// <summary>
+	/// 根据数组创建list
+	/// </summary>
+	ListNode * CreateList(const std::vector<int> &v)
+	{
+		if (v.empty())
+			return nullptr;
+		ListNode * head = new ListNode(v[0]);
+		ListNode *cur = head;
+		for (size_t i = 1; i < v.size(); ++i)
+		{
+			cur->next = new ListNode(v[i]);
+			cur = cur->next;
+		}
+		return head;
+	}
+
+	/// <summary>
+	/// 返回第idx个节点
+	/// </summary>
+	ListNode * GetListNodeAt(ListNode *head, size_t idx)
+	{
+		while (idx-- && head != nullptr)
+			head = head->next;
+		if (head == nullptr)
+			throw std::runtime_error("invalid index!!!");
+		return head;
+	}
+
+	/// <summary>
+	/// 判断是否有环
+	/// </summary>
+	bool HasCycle(ListNode *head)
+	{
+		if (head == nullptr || head->next == nullptr)
+			return false;
+		if (head->next == head) //一个节点单独考虑
+			return true;
+		if (head->next->next == head) //只有两个节点单独考虑
+			return true;
+		ListNode *fast = head;
+		ListNode *slow = head;
+		while (fast != nullptr && fast->next != nullptr)
+		{
+			fast = fast->next->next;
+			slow = slow->next;
+			if (fast == slow) //找到第一次相遇的点
+				break;
+		}
+
+		if (fast == nullptr || fast->next == nullptr)
+			return false;
+		return true;
+	}
+
+
+	/// <summary>
+	/// 找到入环点
+	/// </summary>
+	ListNode *FindIntoCycle(ListNode *head)
+	{
+		if (head == nullptr || head->next == nullptr)
+			return nullptr;
+		if (head->next == head) //一个节点单独考虑
+			return head;
+		if (head->next->next == head) //只有两个节点单独考虑 (其实都不用单独考虑)
+			return head;
+		ListNode *fast = head;
+		ListNode *slow = head;
+		while (fast != nullptr && fast->next != nullptr
+			)
+		{
+			fast = fast->next->next;
+			slow = slow->next;
+			if (fast == slow) //找到第一次相遇的点
+				break;
+		}
+
+		if (fast == nullptr || fast->next == nullptr)
+			return nullptr;
+
+		slow = head; //一个节点再回到head
+		while (slow != fast) //再次相遇就是入环点
+		{
+			slow = slow->next;
+			fast = fast->next;
+		}
+		return slow;
+	}
 
 }
 #endif

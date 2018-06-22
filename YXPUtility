@@ -2,8 +2,8 @@
 #define YXP_UTILITY
 #include "DataStructures/Array.h"
 #include "DataStructures/Heap.h"
-#include "DataStructures/BinaryTreeNode.h"
-#include "DataStructures/ListNode.h"
+#include "DataStructures/BinaryTree.h"
+#include "DataStructures/List.h"
 #include "DataStructures/MaxMinStack.h"
 #include "DataStructures/MaxMinQueue.h"
 #include "DataStructures/MaxMinQueue.h"
