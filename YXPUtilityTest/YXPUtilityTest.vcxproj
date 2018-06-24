@@ -151,6 +151,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ArrayTest.cpp" />
+    <ClCompile Include="BinaryTreeTest.cpp" />
     <ClCompile Include="HeapTest.cpp" />
     <ClCompile Include="ListTest.cpp" />
     <ClCompile Include="MaxMinQueueTest.cpp" />

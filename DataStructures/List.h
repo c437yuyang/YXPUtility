@@ -293,12 +293,17 @@ namespace yxp_utility
 					return false;
 				else
 				{
-					if (head->next == rightHead) //奇数个的情况
+					if (head->next == rightHead) //偶数个的情况,奇数个会一直一起走到中间节点，然后最后的return true来进行返回
 						return true;
 					head = head->next;
 					rightHead = rightHead->next;
 				}
 			}
+
+
+			//最后再翻转一下链表，恢复原链表，先暂时不写了
+			//ListNode *prev = 
+
 			return true;
 		}
 	}
