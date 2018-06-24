@@ -116,6 +116,10 @@ TEST(StrAlgoTest, TrimTest)
 {
 	std::string str = "eeebcdeeeee";
 	EXPECT_EQ(StrAlgo::trim(str, "e"), "bcd");
+
+	str = "   eeebcdeeeee   ";
+	EXPECT_EQ(StrAlgo::trim(str), "eeebcdeeeee");
+
 }
 
 TEST(StrAlgoTest, ReplaceAllTest)

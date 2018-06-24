@@ -42,5 +42,8 @@
     <ClCompile Include="StrAlgoTest.cpp">
       <Filter>源文件\UtilitiesTest</Filter>
     </ClCompile>
+    <ClCompile Include="ListTest.cpp">
+      <Filter>源文件\DataStructuresTest</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

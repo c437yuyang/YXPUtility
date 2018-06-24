@@ -51,7 +51,7 @@ bool YXPFileIO::RecurMkDir(const std::string& path)
 	int len = p.length();
 	if (len < 2) return false;
 
-	if ('\\' == p[len - 1]|| '/' == p[len - 1])
+	if ('\\' == p[len - 1] || '/' == p[len - 1])
 	{
 		p = p.substr(0, len - 1);
 		len = p.length();
@@ -288,7 +288,7 @@ bool YXPFileIO::Rename(const std::string &src, const std::string &dst, bool exis
 	return	rename(src.c_str(), dst.c_str()) < 0 ? false : true;
 }
 
-std::string YXPFileIO::GetAppStdStringPath()
+std::string YXPFileIO::GetAppPath()
 {
 	char exeFullPath[MAX_PATH];
 
@@ -312,7 +312,7 @@ bool YXPFileIO::CopyDirFiles(const std::string & src, const std::string & dst, b
 
 	std::vector<std::string> src_files;
 
-	GetDirectoryFiles(src, src_files,true,true);
+	GetDirectoryFiles(src, src_files, true, true);
 	if (!exist_replace) //不进行替换的情况下，先检查有重复文件否,防止出现部分拷贝
 	{
 		std::vector<std::string> dst_files;
@@ -322,7 +322,7 @@ bool YXPFileIO::CopyDirFiles(const std::string & src, const std::string & dst, b
 			for (auto dst_file : dst_files)
 			{
 				if (_stricmp(GetFileNameNoPath(src_file).c_str(),
-								GetFileNameNoPath(dst_file).c_str()) == 0)
+					GetFileNameNoPath(dst_file).c_str()) == 0)
 					return false;
 			}
 		}
@@ -330,9 +330,9 @@ bool YXPFileIO::CopyDirFiles(const std::string & src, const std::string & dst, b
 	//CopyFile:
 	//If the function succeeds, the return value is nonzero.
 	//If the function fails, the return value is zero.To get extended error information, call GetLastError.
-	for (auto it=src_files.begin();it!=src_files.end();++it)
+	for (auto it = src_files.begin(); it != src_files.end(); ++it)
 	{
-		if (!CopyFileA(it->c_str(), (dst +"\\"+ GetFileNameNoPath(*it)).c_str(), !exist_replace))
+		if (!CopyFileA(it->c_str(), (dst + "\\" + GetFileNameNoPath(*it)).c_str(), !exist_replace))
 			return false;
 	}
 	return true;
@@ -352,7 +352,7 @@ std::string YXPFileIO::BrowseFile(const std::string filter, bool open)
 	ofn.nFilterIndex = 1;
 	ofn.Flags = OFN_PATHMUSTEXIST;
 
-	if (open) 
+	if (open)
 	{
 		ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST;
 		GetOpenFileNameA(&ofn);
@@ -403,9 +403,9 @@ bool YXPFileIO::WriteToText(const std::string & filename, const std::string & tx
 
 long long YXPFileIO::GetFileSize(const std::string &filename)
 {
-  ifstream ifs(filename);
-  if (!ifs.is_open())
-    return -1;
-  ifs.seekg(std::ios::end);
-  return static_cast<long long>(ifs.tellg());
+	ifstream ifs(filename);
+	if (!ifs.is_open())
+		return -1;
+	ifs.seekg(std::ios::end);
+	return static_cast<long long>(ifs.tellg());
 }

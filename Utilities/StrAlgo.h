@@ -42,17 +42,17 @@ namespace yxp_utility
 		/// <summary>
 		/// 删除首部prefix
 		/// </summary>
-		static std::string trimStart(const std::string& str, const std::string& prefix);
+		static std::string trimStart(const std::string& str, const std::string& prefix=" ");
 
 		/// <summary>
 		/// 删除尾部appendix
 		/// </summary>
-		static std::string trimEnd(const std::string& str, const std::string& appendix);
+		static std::string trimEnd(const std::string& str, const std::string& appendix=" ");
 
 		/// <summary>
 		/// 删除首部和尾部的del
 		/// </summary>
-		static std::string trim(const std::string& str, const std::string& del);
+		static std::string trim(const std::string& str, const std::string& del=" ");
 
 		/// <summary>
 		/// 替换全部from为to，若未找到，直接返回

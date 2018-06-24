@@ -29,7 +29,7 @@ namespace yxp_utility
 			std::cout << head->val << " ";
 			head = head->next;;
 		}
-		std::cout << endl;
+		std::cout << std::endl;
 	}
 
 	/// <summary>
@@ -43,7 +43,10 @@ namespace yxp_utility
 		}
 		ListNode *fast = head;
 		ListNode *slow = head;
-		while (fast->next != nullptr && fast->next->next != nullptr)
+
+
+		while (fast->next != nullptr && fast->next->next != nullptr)//这样，当时偶数的时候，找到的是上中位点 1->2->3->4 slow最后等于2
+		//while (fast != nullptr && fast->next != nullptr)//这样，当是偶数的时候，找到的是下中位点 1->2->3->4 slow最后等于3
 		{
 			slow = slow->next;
 			fast = fast->next->next;
@@ -67,7 +70,6 @@ namespace yxp_utility
 			pHead = nextSave;
 		}
 		return prev;
-
 	}
 
 	/// <summary>
@@ -253,5 +255,52 @@ namespace yxp_utility
 		return slow;
 	}
 
+
+	bool isPalindrome(ListNode* head)
+	{
+		if (head == nullptr)
+			return false;
+		else if (head->next == nullptr)
+			return true;
+		else
+		{
+			//快慢指针找出中间节点  
+			ListNode* fast = head;
+			ListNode* slow = head;
+
+			while (fast->next != nullptr && fast->next->next != nullptr)
+			{
+				slow = slow->next;
+				fast = fast->next->next;
+			}
+			//找到左边最后一个是slow,(上中位点)
+
+			ListNode *prev = slow;
+			ListNode *rightHead = slow->next;
+			while (rightHead!=nullptr)
+			{
+				ListNode * rightHeadNextSave = rightHead->next;
+				rightHead->next = prev;
+				prev = rightHead;
+				rightHead = rightHeadNextSave;
+			}
+			rightHead = prev; //翻转了过后，找到右边的开头
+
+			//从头和尾向中间进行逐个比较，一旦有一个元素不等则不是  
+			while (head != rightHead)
+			{
+				if (head->val != rightHead->val)
+					return false;
+				else
+				{
+					if (head->next == rightHead) //奇数个的情况
+						return true;
+					head = head->next;
+					rightHead = rightHead->next;
+				}
+			}
+			return true;
+		}
+	}
 }
 #endif

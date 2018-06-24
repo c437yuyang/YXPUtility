@@ -48,12 +48,14 @@ namespace yxp_utility
 		static std::string GetFileNameExt(const std::string &filename);
 		static	bool CheckFileExt(const std::string& Path, const std::string &ext);
 		static bool Rename(const std::string &path, const std::string &dst, bool IsExistReplace = false);
-		static std::string GetAppStdStringPath();
+		
 		static bool CopyDirFiles(const std::string&src, const std::string &dst, bool IsExistReplace = false);
 
 		static CString GetAppCStringPath(); //公共函数用于取得程序运行路径，返回值带'\\'
+		static std::string GetAppPath(); //返回值没有'\\'
+
 		static bool ReadAllText(const std::string &filename, std::string &txt);
 		static bool WriteToText(const std::string &filename, const std::string &txt);
-    static long long GetFileSize(const std::string &filename);
+		static long long GetFileSize(const std::string &filename);
 	};
 }
