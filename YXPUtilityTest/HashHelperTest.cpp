@@ -50,10 +50,19 @@ public:
 
 TEST(HashHelperTest, HashHelperTest1)
 {
-	std::unordered_set<Widget_Complex, Widget_ComplexHasher> cw_hash_set;
+	std::unordered_set<Widget_Complex, Widget_ComplexHasher> cw_hash_set; //类自己提供了operator==,否则可以参考下面注释部分
 	cw_hash_set.insert(Widget_Complex(1, 1, "2"));
 	cw_hash_set.insert(Widget_Complex(1, 2, "3"));
 	EXPECT_NE(cw_hash_set.find(Widget_Complex(1, 1, "2")), cw_hash_set.end());
 	EXPECT_NE(cw_hash_set.find(Widget_Complex(1, 2, "3")), cw_hash_set.end());
 	EXPECT_EQ(cw_hash_set.find(Widget_Complex(1, 2, "2")), cw_hash_set.end());
 }
+
+//class Widget_Datum_Equal : public std::binary_function<Widget, Widget, bool>
+//{
+//public:
+//	bool operator()(const Widget &left, const Widget &right) const
+//	{
+//		return left.data == right.data;
+//	}
+//};

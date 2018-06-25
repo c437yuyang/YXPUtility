@@ -12,6 +12,7 @@
 #include "Utilities/ArrayHelper.h"
 #include "Utilities/RandomHelper.h"
 #include "Utilities/StrAlgo.h"
+#include "Utilities/HashHelper.h"
 
 
 //Need MFC

@@ -51,5 +51,8 @@
     <ClCompile Include="HashHelperTest.cpp">
       <Filter>源文件\DataStructuresTest</Filter>
     </ClCompile>
+    <ClCompile Include="TrieTreeTest.cpp">
+      <Filter>源文件\DataStructuresTest</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

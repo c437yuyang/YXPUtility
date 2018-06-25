@@ -159,6 +159,7 @@
     <ClCompile Include="MaxMinStackTest.cpp" />
     <ClCompile Include="RandomHelperTest.cpp" />
     <ClCompile Include="StrAlgoTest.cpp" />
+    <ClCompile Include="TrieTreeTest.cpp" />
     <ClCompile Include="YXPUtilityTest.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -16,6 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataStructures", "DataStruc
 		DataStructures\List.h = DataStructures\List.h
 		DataStructures\MaxMinQueue.h = DataStructures\MaxMinQueue.h
 		DataStructures\MaxMinStack.h = DataStructures\MaxMinStack.h
+		DataStructures\TrieTree.h = DataStructures\TrieTree.h
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utilities", "Utilities", "{E40B693E-7679-4FCE-920E-2620CE26C18A}"
