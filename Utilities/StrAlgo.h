@@ -74,6 +74,11 @@ namespace yxp_utility
 		/// </summary>
 		static std::string eraseAll(const std::string& str, const std::string& from);
 
+		/// <summary>
+		/// ÊÇ·ñ»ØÎÄ
+		/// </summary>
+		static bool isPalindrome(const std::string&str);
+
 	};
 }
 
@@ -249,6 +254,14 @@ namespace yxp_utility
 	std::string StrAlgo::eraseAll(const std::string& str, const std::string& from)
 	{
 		return replaceAll(str, from, "");
+	}
+	
+	bool isPalindrome(const std::string& str)
+	{
+		for (int i = 0, j = str.length() - 1; i < j; i++, j--)
+			if (str[i] != str[j])
+				return false;
+		return true;
 	}
 }
 #endif

@@ -21,6 +21,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utilities", "Utilities", "{E40B693E-7679-4FCE-920E-2620CE26C18A}"
 	ProjectSection(SolutionItems) = preProject
 		Utilities\ArrayHelper.h = Utilities\ArrayHelper.h
+		Utilities\HashHelper.h = Utilities\HashHelper.h
 		Utilities\RandomHelper.h = Utilities\RandomHelper.h
 		Utilities\StrAlgo.h = Utilities\StrAlgo.h
 		Utilities\StrCvt.cpp = Utilities\StrCvt.cpp
