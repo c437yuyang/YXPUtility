@@ -7,6 +7,7 @@
 #include "DataStructures/MaxMinStack.h"
 #include "DataStructures/MaxMinQueue.h"
 #include "DataStructures/MaxMinQueue.h"
+#include "DataStructures/TrieTree.h"
 
 
 #include "Utilities/ArrayHelper.h"

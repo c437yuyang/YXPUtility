@@ -25,7 +25,16 @@ namespace yxp_utility
 
 		~TrieTree()
 		{
+			TrieNode ** root = &(static_cast<TrieNode*>(root_));
+			clearRoot(root);
+		}
 
+		void clear()
+		{
+			for (size_t i = 0; i < 26; ++i)
+			{
+				clearRoot(&(root_->nexts[i]));
+			}
 		}
 
 		void insert(const std::string&str)
@@ -44,7 +53,7 @@ namespace yxp_utility
 			++node->end;
 		}
 
-		void remove(const std::string&str) 
+		void remove(const std::string&str)
 		{
 			if (count(str) == 0)
 				return;
@@ -58,13 +67,7 @@ namespace yxp_utility
 				node = node->nexts[idx];
 			}
 			--node->end;
-			while (!wait2Delete.empty()) //全部清除掉
-			{
-				TrieNode** tmp = wait2Delete.top();
-				wait2Delete.pop();
-				delete *tmp;
-				*tmp = nullptr;
-			}
+			clearInStack(wait2Delete);
 		}
 
 
@@ -97,9 +100,50 @@ namespace yxp_utility
 			}
 			return node->path;
 		}
+	private:
+		void add2Stack(TrieNode**root, std::stack<TrieNode**> &wait2Delete)
+		{
+			if (root == nullptr)
+				return;
+			wait2Delete.push(root);
+			for (size_t i = 0; i < 26; ++i)
+				if ((*root)->nexts[i] != nullptr)
+					add2Stack(&(*root)->nexts[i], wait2Delete);
+		}
+
+		void clearInStack(std::stack<TrieNode**> &wait2Delete)
+		{
+			while (!wait2Delete.empty()) //全部清除掉
+			{
+				TrieNode** tmp = wait2Delete.top();
+				wait2Delete.pop();
+				delete (*tmp)->nexts;
+				(*tmp)->nexts = nullptr;
+				delete *tmp;
+				*tmp = nullptr;
+			}
+		}
+
+		/// <summary>
+		/// dfs清除内存
+		/// </summary>
+		void clearRoot(TrieNode ** root)
+		{
+			if ((*root) == nullptr)
+				return;
+			for (size_t i = 0; i < 26; ++i)
+			{
+				if ((*root)->nexts[i] != nullptr)
+					clearRoot(&((*root)->nexts[i]));
+			}
+			delete[]((*root)->nexts);
+			(*root)->nexts = nullptr;
+			delete (*root);
+			(*root) = nullptr;
+		}
 
 	private:
-		 TrieNode* const root_; //不允许改变，只能在构造函数初始化
+		TrieNode* const root_; //不允许改变，只能在构造函数初始化
 	};
 
 }
