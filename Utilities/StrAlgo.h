@@ -256,12 +256,13 @@ namespace yxp_utility
 		return replaceAll(str, from, "");
 	}
 	
-	bool isPalindrome(const std::string& str)
+	bool StrAlgo::isPalindrome(const std::string& str)
 	{
-		for (int i = 0, j = str.length() - 1; i < j; i++, j--)
-			if (str[i] != str[j])
-				return false;
-		return true;
+		//for (int i = 0, j = str.length() - 1; i < j; i++, j--)
+		//	if (str[i] != str[j])
+		//		return false;
+		//return true;
+		return str == std::string(str.rbegin(), str.rend());
 	}
 }
 #endif

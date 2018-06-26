@@ -145,3 +145,14 @@ TEST(StrAlgoTest, EraseAllTest)
 	std::string str = "bcdeeee";
 	EXPECT_EQ(StrAlgo::eraseAll(str, "e"), "bcd");
 }
+	
+TEST(StrAlgoTest,IsPalindronmeTest)
+{
+	EXPECT_EQ(StrAlgo::isPalindrome("abccba"), true);
+	EXPECT_EQ(StrAlgo::isPalindrome("abcba"), true);
+	EXPECT_EQ(StrAlgo::isPalindrome("aba"), true);
+	EXPECT_EQ(StrAlgo::isPalindrome("a"), true);
+	EXPECT_EQ(StrAlgo::isPalindrome("abb"), false);
+	EXPECT_EQ(StrAlgo::isPalindrome("ab"), false);
+	EXPECT_EQ(StrAlgo::isPalindrome("aaa"), true);
+}

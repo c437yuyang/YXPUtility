@@ -12,7 +12,7 @@ namespace yxp_utility
 		ListNode(int x) : val(x), next(nullptr) {}
 	};
 
-	void DestroyList(ListNode* head)
+	void DestroyList(ListNode *head)
 	{
 		while (head != nullptr)
 		{
@@ -57,7 +57,7 @@ namespace yxp_utility
 	/// <summary>
 	/// 翻转链表
 	/// </summary>
-	ListNode* ReverseList(ListNode* pHead)
+	ListNode *ReverseList(ListNode *pHead)
 	{
 		if (pHead == nullptr || pHead->next == nullptr)
 			return pHead;
@@ -78,7 +78,7 @@ namespace yxp_utility
 	/// <param name="head1"></param>
 	/// <param name="head2"></param>
 	/// <returns></returns>
-	ListNode *MergeListNoOrder(ListNode *head1, ListNode*head2)
+	ListNode *MergeListNoOrder(ListNode *head1, ListNode *head2)
 	{
 		if (head1 == nullptr)
 			return head2;
@@ -168,7 +168,7 @@ namespace yxp_utility
 	/// <summary>
 	/// 根据数组创建list
 	/// </summary>
-	ListNode * CreateList(const std::vector<int> &v)
+	ListNode *CreateList(const std::vector<int> &v)
 	{
 		if (v.empty())
 			return nullptr;
@@ -185,7 +185,7 @@ namespace yxp_utility
 	/// <summary>
 	/// 返回第idx个节点
 	/// </summary>
-	ListNode * GetListNodeAt(ListNode *head, size_t idx)
+	ListNode *GetListNodeAt(ListNode *head, size_t idx)
 	{
 		while (idx-- && head != nullptr)
 			head = head->next;
@@ -255,8 +255,7 @@ namespace yxp_utility
 		return slow;
 	}
 
-
-	bool isPalindrome(ListNode* head)
+	bool isPalindrome(ListNode *head)
 	{
 		if (head == nullptr)
 			return false;
