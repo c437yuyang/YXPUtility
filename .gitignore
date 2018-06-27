@@ -3,7 +3,7 @@
 
 # linux
 *.o
-YXPUtilityTest
+YXPUtilityTest/YXPUtilityTest
 # User-specific files
 *.suo
 *.user
