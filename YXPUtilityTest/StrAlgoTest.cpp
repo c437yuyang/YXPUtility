@@ -59,16 +59,16 @@ TEST(StrAlgoTest, JoinIfTest)
 {
 	std::vector<std::string> test_strs = { "1", "2", "13", "-1" };
 
-	auto res = StrAlgo::joinIf(test_strs, '\0', [](const std::string&str) { return str.find("1") != -1; });
+	auto res = StrAlgo::joinIf(test_strs, '\0', [](const std::string&str) { return str.find("1") != std::string::npos; });
 	std::string str_expect = "113-1";
 	EXPECT_EQ(res, str_expect);
 
 
-	res = StrAlgo::joinIf(test_strs, ' ', [](const std::string&str) { return str.find("1") != -1; });
+	res = StrAlgo::joinIf(test_strs, ' ', [](const std::string&str) { return str.find("1") != std::string::npos; });
 	str_expect = "1 13 -1";
 	EXPECT_EQ(res, str_expect);
 
-	res = StrAlgo::joinIf(test_strs, ' ', [](const std::string&str) { return str.find("-") == -1; });
+	res = StrAlgo::joinIf(test_strs, ' ', [](const std::string&str) { return str.find("-") == std::string::npos; });
 	str_expect = "1 2 13";
 	EXPECT_EQ(res, str_expect);
 }
