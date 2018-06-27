@@ -3,10 +3,10 @@
 #include <stack>
 #include <algorithm>
 #include <functional>
-
+#include <stdexcept>
 namespace yxp_utility
 {
-	template<class T, class Comp = std::less<T>>
+	template<class T, class Comp = std::less<T> >
 	class MaxMinStack
 	{
 	public:
@@ -29,7 +29,7 @@ namespace yxp_utility
 		T pop()
 		{
 			if (data_stack_.empty())
-				throw std::exception("Empty Stack!!!");
+				throw std::runtime_error("Empty Stack!!!");
 
 			T& top_val = data_stack_.top();
 			data_stack_.pop();
@@ -40,14 +40,14 @@ namespace yxp_utility
 		T& top()
 		{
 			if (data_stack_.empty())
-				throw std::exception("Empty Stack!!!");
+				throw std::runtime_error("Empty Stack!!!");
 			return data_stack_.top();
 		}
 
 		T maxOrMin()
 		{
 			if (data_stack_.empty())
-				throw std::exception("Empty Stack!!!");
+				throw std::runtime_error("Empty Stack!!!");
 			return max_min_stack_.top();
 		}
 

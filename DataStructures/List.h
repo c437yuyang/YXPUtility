@@ -1,6 +1,6 @@
 #ifndef LIST_H
 #define LIST_H
-
+#include <stdexcept>
 #include <iostream>
 #include <vector>
 namespace yxp_utility

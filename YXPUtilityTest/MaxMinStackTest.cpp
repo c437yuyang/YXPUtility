@@ -27,7 +27,7 @@ TEST(MaxMinStackTest, demo1)
 
 TEST(MaxMinStackTest, demo2)
 {
-	MaxMinStack<int, std::greater<int>> maxStack;
+	MaxMinStack<int, std::greater<int> > maxStack;
 	maxStack.push(4);
 	maxStack.push(1);
 

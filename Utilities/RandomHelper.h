@@ -69,7 +69,7 @@ namespace yxp_utility
 		{
 			arr.clear();
 			arr.resize(size);
-			for (int i = 0; i != size; ++i)
+			for (size_t i = 0; i != size; ++i)
 				arr[i] = randomInt(min, max);
 		}
 

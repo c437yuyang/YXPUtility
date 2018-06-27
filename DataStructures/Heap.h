@@ -6,7 +6,7 @@
 #include <functional>
 namespace yxp_utility
 {
-	template<typename T, class Comp = std::greater<T>> //default is min heap
+	template<typename T, class Comp = std::greater<T> > //default is min heap
 	class Heap
 	{
 	public:
@@ -23,8 +23,8 @@ namespace yxp_utility
 			initHeap();
 		}
 
-		template<class T>
-		void push(const T& val)
+		template<typename tp>
+		void push(const tp& val)
 		{
 			heap_arr_.push_back(val);
 			std::push_heap(heap_arr_.begin(), heap_arr_.end(), Comp());

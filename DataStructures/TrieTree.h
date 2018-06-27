@@ -25,7 +25,8 @@ namespace yxp_utility
 
 		~TrieTree()
 		{
-			TrieNode ** root = &(static_cast<TrieNode*>(root_));
+			/* TrieNode ** root = &(static_cast<TrieNode*>(root_)); */
+			TrieNode ** root = &(root_);
 			clearRoot(root);
 		}
 
@@ -117,7 +118,7 @@ namespace yxp_utility
 			{
 				TrieNode** tmp = wait2Delete.top();
 				wait2Delete.pop();
-				delete (*tmp)->nexts;
+				delete [](*tmp)->nexts;
 				(*tmp)->nexts = nullptr;
 				delete *tmp;
 				*tmp = nullptr;
@@ -143,7 +144,7 @@ namespace yxp_utility
 		}
 
 	private:
-		TrieNode* const root_; //不允许改变，只能在构造函数初始化
+		TrieNode* root_; //不允许改变，只能在构造函数初始化
 	};
 
 }

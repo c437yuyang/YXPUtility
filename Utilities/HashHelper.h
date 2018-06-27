@@ -13,7 +13,7 @@ namespace yxp_utility
 	{
 		size_t operator()(const T *ptr) const
 		{
-			return std::hash<int>()((int)ptr);
+			return std::hash<size_t>()((size_t)ptr);
 		}
 	};
 

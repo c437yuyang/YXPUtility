@@ -363,9 +363,7 @@ namespace yxp_utility
 			return;
 		}
 		printInOrder(head->right, height + 1, "v", len);
-		char buf[10];
-		_itoa_s(head->val, buf, 10);
-		string val = to + buf + to;
+		string val = to + std::to_string(head->val) + to;
 		int lenM = val.length();
 		int lenL = (len - lenM) / 2;
 		int lenR = len - lenM - lenL;

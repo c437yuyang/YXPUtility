@@ -1,10 +1,10 @@
 #ifndef _MAXMINQUEUE_H_
 #define _MAXMINQUEUE_H_
 #include "MaxMinStack.h"
-
+#include <stdexcept>
 namespace yxp_utility
 {
-	template<class T, class Comp = std::less<T>>
+	template<class T, class Comp = std::less<T> >
 	class MaxMinQueue
 	{
 	public:
@@ -51,7 +51,7 @@ namespace yxp_utility
 			if (pop_stack_.empty())
 			{
 				if (push_stack_.empty())
-					throw std::exception("empty stack!!!");
+					throw std::runtime_error("empty stack!!!");
 				while (!push_stack_.empty())
 					pop_stack_.push(push_stack_.pop());
 			}

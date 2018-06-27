@@ -1,6 +1,7 @@
 #ifndef ARRAY_H
 #define ARRAY_H
 #include <iostream>
+#include <stdexcept>
 using std::ostream;
 
 namespace yxp_utility
@@ -55,7 +56,7 @@ namespace yxp_utility
 	{
 		for (int j = 0; j != arr.size_; ++j)
 			out << arr[j] << " ";
-		out << endl;
+		out << std::endl;
 		return out;
 	}
 
@@ -152,7 +153,7 @@ namespace yxp_utility
 		{
 			for (size_t j = 0; j != mat.cols_; ++j)
 				out << mat[i][j] << " ";
-			out << endl;
+			out << std::endl;
 		}
 		return out;
 	}
