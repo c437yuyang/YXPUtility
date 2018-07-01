@@ -22,6 +22,21 @@ namespace yxp_utility
 		}
 	}
 
+	ListNode* CopyList(ListNode *head)
+	{
+		if (head == nullptr)
+			return nullptr;
+		ListNode *newHead = new ListNode(head->val);
+		ListNode *newCur = newHead;
+		while (head->next != nullptr)
+		{
+			head = head->next;
+			newCur->next = new ListNode(head->val);
+			newCur = newCur->next;
+		}
+		return newHead;
+	}
+
 	void PrintList(ListNode *head)
 	{
 		while (head != nullptr)

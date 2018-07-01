@@ -144,7 +144,7 @@ namespace yxp_utility
 		}
 
 	private:
-		TrieNode* root_; //不允许改变，只能在构造函数初始化
+		TrieNode* root_; 
 	};
 
 }

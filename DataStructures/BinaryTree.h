@@ -346,44 +346,40 @@ namespace yxp_utility
 #else
 	typedef shared_ptr<BinaryTreeNode<int>> ipBTN;
 #endif
-	void printTree(ipBTN head);
-	void printInOrder(ipBTN head, int height, std::string to, int len);
-	std::string getSpace(int num);
+	void PrintTree(ipBTN head);
+	void PrintInOrder(ipBTN head, int height, std::string to, int len);
+	std::string GetSpace(int num);
 
-	void printTree(ipBTN head)
+	void PrintTree(ipBTN head)
 	{
 		//System.out.println("Binary Tree:");
-		printInOrder(head, 0, "H", 17);
+		PrintInOrder(head, 0, "H", 17);
 	}
 
-	void printInOrder(ipBTN head, int height, std::string to, int len)
+	void PrintInOrder(ipBTN head, int height, std::string to, int len)
 	{
 		if (head == nullptr)
 		{
 			return;
 		}
-		printInOrder(head->right, height + 1, "v", len);
+		PrintInOrder(head->right, height + 1, "v", len);
 		string val = to + std::to_string(head->val) + to;
 		int lenM = val.length();
 		int lenL = (len - lenM) / 2;
 		int lenR = len - lenM - lenL;
-		val = getSpace(lenL) + val + getSpace(lenR);
-		cout << (getSpace(height * len) + val) << endl;
-		printInOrder(head->left, height + 1, "^", len);
+		val = GetSpace(lenL) + val + GetSpace(lenR);
+		cout << (GetSpace(height * len) + val) << endl;
+		PrintInOrder(head->left, height + 1, "^", len);
 	}
 
-	std::string getSpace(int num)
+	std::string GetSpace(int num)
 	{
 		string space = " ";
 		string buf;
 		for (int i = 0; i < num; i++)
-		{
 			buf += space;
-		}
 		return buf;
 	}
 #endif
-
-
 }
 

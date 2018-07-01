@@ -5,10 +5,10 @@ obj=$(patsubst %.cpp,%.o,$(src))
 target=YXPUtilityTest
 
 all:$(obj)
-	 $(CC) $(obj) $(CFLAGS) -o YXPUtilityTest
+  $(CC) $(obj) $(CFLAGS) -o YXPUtilityTest
 
 %.o:%.cpp
-	$(CC) $(CFLAGS) $< -I../ -c -o $@ 
+  $(CC) $(CFLAGS) $< -I../ -c -o $@ 
 
 
 .PHONY:clean test
