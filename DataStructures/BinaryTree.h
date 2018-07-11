@@ -119,8 +119,8 @@ namespace yxp_utility
 		DestoyTree(right);
 	}
 
-	//³£ÓÃµÄÀý×Ó¶þ²æÊ÷
-	TreeNode *GetExampleTree()
+	//²ãÐòË³Ðò¶þ²æÊ÷
+	TreeNode *GetExampleTree1()
 	{
 		TreeNode* head = new TreeNode(1);
 		head->left = new TreeNode(2);
@@ -129,10 +129,24 @@ namespace yxp_utility
 		head->left->right = new TreeNode(5);
 		head->right->left = new TreeNode(6);
 		head->right->right = new TreeNode(7);
-		head->left->left->left = new TreeNode(8);
-		head->left->left->right = new TreeNode(9);
+		//head->left->left->left = new TreeNode(8);
+		//head->left->left->right = new TreeNode(9);
 		return head;
 	}
+
+	//ÖÐÐòË³Ðò¶þ²æÊ÷
+	TreeNode *GetExampleTree2()
+	{
+		TreeNode* head = new TreeNode(4);
+		head->left = new TreeNode(2);
+		head->right = new TreeNode(6);
+		head->left->left = new TreeNode(1);
+		head->left->right = new TreeNode(3);
+		head->right->left = new TreeNode(5);
+		head->right->right = new TreeNode(7);
+		return head;
+	}
+
 
 	std::vector<int> levelOrderTraversal(TreeNode *root)
 	{
