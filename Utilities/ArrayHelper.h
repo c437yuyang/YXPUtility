@@ -49,6 +49,32 @@ namespace yxp_utility
 				std::cout << std::endl;
 		}
 
+		/// <summary>
+		/// 不改变其他元素先后顺序交换元素,比如1234,交换2和4,直接交换后是1432就乱了，这个交换后就是1423
+		/// 这个和直接交换的区别，在getPermutation(3,3)的时候，最后两个顺序会有区别
+		/// 从前往后移动,要求i<j
+		/// </summary>
+		template<class T>
+		void keepOrderSwap1(std::vector<T>&arr, size_t i, size_t j)
+		{
+			assert(i <= j);
+			char tmp = arr[j];
+			for (size_t i1 = j; i1 > i; --i1) //递减不带=号是可以用size_t的
+				arr[i1] = arr[i1 - 1];
+			arr[i] = tmp;
+		}
+
+		//从后往前移动
+		template<class T>
+		void keepOrderSwap2(std::vector<T>&arr, size_t i, size_t j)
+		{
+			assert(i <= j);
+			char tmp = arr[i];
+			for (size_t i1 = i; i1 < j; ++i1)
+				arr[i1] = arr[i1 + 1];
+			arr[j] = tmp;
+		}
+
 	};
 }
 
