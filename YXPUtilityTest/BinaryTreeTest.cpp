@@ -4,7 +4,7 @@ using namespace yxp_utility;
 
 TEST(BinaryTreeTest, TraversalTest)
 {
-	TreeNode* node = GetExampleTree();
+	TreeNode* node = GetExampleTree1();
 	std::vector<int> res{ 1,2,4,8,9,5,3,6,7 };
 	EXPECT_EQ(preOrderTraversal(node), res);
 	res = {8,4,9,2,5,1,6,3,7 };
@@ -19,14 +19,14 @@ TEST(BinaryTreeTest, TraversalTest)
 
 TEST(BinaryTreeTest, GetiHeightTest)
 {
-	TreeNode* node = GetExampleTree();
+	TreeNode* node = GetExampleTree1();
 	EXPECT_EQ(getHeight(node), 4);
 }
 
 
 TEST(BinaryTreeTest, SerialTest)
 {
-	TreeNode* node = GetExampleTree();
+	TreeNode* node = GetExampleTree1();
 	std::string res = "1!2!4!8!#!#!9!#!#!5!#!#!3!6!#!#!7!#!#!";
 	EXPECT_EQ(serialByPre(node), res);
 
@@ -38,7 +38,7 @@ TEST(BinaryTreeTest, SerialTest)
 
 TEST(BinaryTreeTest, reconPreSerialTest)
 {
-	TreeNode* node = GetExampleTree();
+	TreeNode* node = GetExampleTree1();
 	std::string res = "1!2!4!8!#!#!9!#!#!5!#!#!3!6!#!#!7!#!#!";
 	EXPECT_EQ(serialByPre(node), res);
 	TreeNode * reconHead = reconByPreSerial(res);
@@ -47,7 +47,7 @@ TEST(BinaryTreeTest, reconPreSerialTest)
 
 TEST(BinaryTreeTest, reconPosSerialTest)
 {
-	TreeNode* node = GetExampleTree();
+	TreeNode* node = GetExampleTree1();
 	std::string res = "#!#!8!#!#!9!4!#!#!5!2!#!#!6!#!#!7!3!1!";
 	EXPECT_EQ(serialByPos(node), res);
 	TreeNode * reconHead = reconByPosSerial(res);

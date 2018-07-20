@@ -54,5 +54,8 @@
     <ClCompile Include="TrieTreeTest.cpp">
       <Filter>源文件\DataStructuresTest</Filter>
     </ClCompile>
+    <ClCompile Include="Clibs_ImplTest.cpp">
+      <Filter>源文件\UtilitiesTest</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

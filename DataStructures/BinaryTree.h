@@ -129,8 +129,8 @@ namespace yxp_utility
 		head->left->right = new TreeNode(5);
 		head->right->left = new TreeNode(6);
 		head->right->right = new TreeNode(7);
-		//head->left->left->left = new TreeNode(8);
-		//head->left->left->right = new TreeNode(9);
+		head->left->left->left = new TreeNode(8);
+		head->left->left->right = new TreeNode(9);
 		return head;
 	}
 
