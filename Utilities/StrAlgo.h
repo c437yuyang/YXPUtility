@@ -80,6 +80,11 @@ public:
     /// </summary>
     static bool isPalindrome(const std::string&str);
 
+	/// <summary>
+	/// 最长回文子串
+	/// </summary>
+	static std::string longestPalindrome(const std::string&str);
+
 };
 }
 
@@ -269,6 +274,44 @@ bool StrAlgo::isPalindrome(const std::string& str)
     //		return false;
     //return true;
     return str == std::string(str.rbegin(), str.rend());
+}
+
+std::string StrAlgo::longestPalindrome(const std::string&str)
+{
+	if (str.length() == 0)
+		return "";
+
+	int maxLen = 0, left, right;
+	size_t leftBound = -1;
+	for (size_t i = 0; i < str.length(); ++i) //每个位置开始
+	{	//从任意位置往外扩
+		left = i, right = i;//bab，这时从a往外扩
+		while (left >= 0 && right < str.length()
+			&& str[left] == str[right])
+		{
+			if (right - left + 1 >= maxLen)
+			{
+				leftBound = left;
+				maxLen = right - left + 1;
+			}
+			--left;
+			++right;
+		}
+
+		left = i, right = i + 1; //bb,从b,b往外扩
+		while (left >= 0 && right < str.length()
+			&& str[left] == str[right])
+		{
+			if (right - left + 1 >= maxLen)
+			{
+				leftBound = left;
+				maxLen = right - left + 1;
+			}
+			--left;
+			++right;
+		}
+	}
+	return  str.substr(leftBound, maxLen);
 }
 }
 #endif
