@@ -115,6 +115,29 @@ namespace yxp_utility
 		{
 			memcpy(dst, src, size * sizeof(T));
 		}
+
+		static bool sortCheck(int nSize, int nTestTime, int min, int max, void(*pSort)(int *, int))
+		{
+			int *pTestArr1 = new int[nSize];
+			int *pTestArr2 = new int[nSize];
+			initSeed();
+			for (int i = 0; i != nTestTime; ++i)
+			{
+				randomArray(pTestArr1, nSize, min, max); //计数排序可以用
+				//randomArray(pTestArr1, nSize, 1000, 9999); //radix_sort专用，假设传的数是3位的
+				memcpy(pTestArr2, pTestArr1, nSize * sizeof(int));
+				pSort(pTestArr1, nSize);
+				std::sort(pTestArr2, pTestArr2 + nSize);
+				memcpy(pTestArr1, pTestArr2, nSize * sizeof(int));
+				if (memcmp(pTestArr1, pTestArr2, nSize * sizeof(int) != 0))
+					return false;
+			}
+			delete[] pTestArr1;
+			delete[] pTestArr2;
+			return true;
+		}
+
+
 	private:
 		static bool seed_set_;
 	};

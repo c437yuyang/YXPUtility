@@ -26,7 +26,7 @@ namespace yxp_utility
 			return pop_stack_.top();
 		}
 
-		T max()
+		T maxOrMin()
 		{
 			moveBetweenStack();
 			if (!push_stack_.empty())

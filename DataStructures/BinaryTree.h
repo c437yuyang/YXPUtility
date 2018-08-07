@@ -5,6 +5,7 @@
 #include <iostream>
 #include <stack>
 #include <queue>
+#include <algorithm>
 using std::string;
 using std::shared_ptr;
 using std::endl;
