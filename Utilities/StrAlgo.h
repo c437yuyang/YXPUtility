@@ -311,7 +311,7 @@ std::string StrAlgo::longestPalindrome(const std::string&str)
 			++right;
 		}
 	}
-	return  str.substr(leftBound, maxLen);
+	return str.substr(leftBound, maxLen);
 }
 }
 #endif

@@ -1,5 +1,6 @@
 namespace yxp_utility
 {
+	//字符串类
 	size_t strlen(char const* str)
 	{
 		assert(str != nullptr);
@@ -57,7 +58,7 @@ namespace yxp_utility
 	}
 
 
-
+	//数值类
 	bool isOverFlow(long long res, bool neg)
 	{
 		if (neg)
@@ -94,7 +95,32 @@ namespace yxp_utility
 	}
 
 
+	int sqrt(int x)
+	{
+		//思路用二分法
+		if (x < 2)
+			return x;
 
+		int left = 1, right = x / 2; //sqrt最大可能返回的也就是x / 2
+		int lastLess;
+		while (left <= right)
+		{
+			int mid = left + ((right - left) >> 1);
+			if (x / mid > mid) //mid*mid <x
+			{
+				left = mid + 1;
+				lastLess = mid;
+			}
+			else if (x / mid < mid)
+				right = mid - 1;
+			else
+				return mid;
+		}
+		return lastLess;
+	}
+
+
+	//内存操作类
 	void *memcpy(void *pDst, const void *pSrc, size_t size)
 	{
 		if (pDst == nullptr || pSrc == nullptr)
@@ -113,4 +139,7 @@ namespace yxp_utility
 				*(pDstCh + size) = *(pSrcCh + size);
 		return pDst;
 	}
+
+	
+
 }

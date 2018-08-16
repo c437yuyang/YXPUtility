@@ -4,7 +4,7 @@
 namespace yxp_utility
 {
 
-	struct  TrieNode
+	struct TrieNode
 	{
 	public:
 		int path; //经过这个节点的路径数目
