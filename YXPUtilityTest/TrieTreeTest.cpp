@@ -5,7 +5,7 @@ using namespace yxp_utility;
 
 TEST(TrieTreeTest, demo1)
 {
-	TrieTree trie;
+	TrieTree<26> trie('a');
 	EXPECT_EQ(trie.count("zuo"), 0);
 	trie.insert("zuo");
 	EXPECT_EQ(trie.count("zuo"), 1);

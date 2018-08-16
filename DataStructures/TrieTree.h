@@ -3,36 +3,37 @@
 #include <stack>
 namespace yxp_utility
 {
-
+	template<size_t nextcnt = 26>
 	struct TrieNode
 	{
 	public:
 		int path; //经过这个节点的路径数目
 		int end; //这个节点结尾的路径数目
-		TrieNode **nexts;
+		TrieNode<nextcnt> **nexts;
 
-		TrieNode() :path(0), end(0), nexts(new TrieNode*[26])
+		TrieNode<nextcnt>() :path(0), end(0), nexts(new TrieNode<nextcnt>*[nextcnt])
 		{
-			for (size_t i = 0; i < 26; ++i)
+			for (size_t i = 0; i < nextcnt; ++i)
 				nexts[i] = nullptr;//每个节点，都有所有可能的26条路径
 		}
 	};
 
+	template<size_t nextcnt = 26>
 	class TrieTree
 	{
 	public:
-		TrieTree() :root_(new TrieNode()) {}
+		TrieTree(char start) :root_(new TrieNode<nextcnt>()),startValue_(start) {}
 
 		~TrieTree()
 		{
-			/* TrieNode ** root = &(static_cast<TrieNode*>(root_)); */
-			TrieNode ** root = &(root_);
+			/* TrieNode<nextcnt> ** root = &(static_cast<TrieNode<nextcnt>*>(root_)); */
+			TrieNode<nextcnt> ** root = &(root_);
 			clearRoot(root);
 		}
 
 		void clear()
 		{
-			for (size_t i = 0; i < 26; ++i)
+			for (size_t i = 0; i < nextcnt; ++i)
 			{
 				clearRoot(&(root_->nexts[i]));
 			}
@@ -42,12 +43,12 @@ namespace yxp_utility
 		{
 			if (str == "")
 				return;
-			TrieNode * node = root_;
+			TrieNode<nextcnt> * node = root_;
 			for (size_t i = 0; i < str.length(); ++i)
 			{
-				size_t idx = str[i] - 'a';
+				size_t idx = str[i] - startValue_;
 				if (node->nexts[idx] == nullptr)
-					node->nexts[idx] = new TrieNode();
+					node->nexts[idx] = new TrieNode<nextcnt>();
 				node = node->nexts[idx];
 				++node->path;
 			}
@@ -58,11 +59,11 @@ namespace yxp_utility
 		{
 			if (count(str) == 0)
 				return;
-			std::stack<TrieNode**> wait2Delete; //因为指针是拷贝的，所以要传二级指针
-			TrieNode * node = root_; //下面是一定找得到了
+			std::stack<TrieNode<nextcnt>**> wait2Delete; //因为指针是拷贝的，所以要传二级指针
+			TrieNode<nextcnt> * node = root_; //下面是一定找得到了
 			for (size_t i = 0; i < str.length(); ++i)
 			{
-				size_t idx = str[i] - 'a';
+				size_t idx = str[i] - startValue_;
 				if (--node->nexts[idx]->path == 0)
 					wait2Delete.push(&(node->nexts[idx]));
 				node = node->nexts[idx];
@@ -76,10 +77,10 @@ namespace yxp_utility
 		{
 			if (str == "")
 				return 0;
-			TrieNode * node = root_;
+			TrieNode<nextcnt> * node = root_;
 			for (size_t i = 0; i < str.length(); ++i)
 			{
-				size_t idx = str[i] - 'a';
+				size_t idx = str[i] - startValue_;
 				if (node->nexts[idx] == nullptr)
 					return 0;
 				node = node->nexts[idx];
@@ -91,10 +92,10 @@ namespace yxp_utility
 		{
 			if (str == "")
 				return 0;
-			TrieNode * node = root_;
+			TrieNode<nextcnt> * node = root_;
 			for (size_t i = 0; i < str.length(); ++i)
 			{
-				size_t idx = str[i] - 'a';
+				size_t idx = str[i] - startValue_;
 				if (node->nexts[idx] == nullptr)
 					return 0;
 				node = node->nexts[idx];
@@ -102,23 +103,23 @@ namespace yxp_utility
 			return node->path;
 		}
 	private:
-		void add2Stack(TrieNode**root, std::stack<TrieNode**> &wait2Delete)
+		void add2Stack(TrieNode<nextcnt>**root, std::stack<TrieNode<nextcnt>**> &wait2Delete)
 		{
 			if (root == nullptr)
 				return;
 			wait2Delete.push(root);
-			for (size_t i = 0; i < 26; ++i)
+			for (size_t i = 0; i < nextcnt; ++i)
 				if ((*root)->nexts[i] != nullptr)
 					add2Stack(&(*root)->nexts[i], wait2Delete);
 		}
 
-		void clearInStack(std::stack<TrieNode**> &wait2Delete)
+		void clearInStack(std::stack<TrieNode<nextcnt>**> &wait2Delete)
 		{
 			while (!wait2Delete.empty()) //全部清除掉
 			{
-				TrieNode** tmp = wait2Delete.top();
+				TrieNode<nextcnt>** tmp = wait2Delete.top();
 				wait2Delete.pop();
-				delete [](*tmp)->nexts;
+				delete[](*tmp)->nexts;
 				(*tmp)->nexts = nullptr;
 				delete *tmp;
 				*tmp = nullptr;
@@ -128,11 +129,11 @@ namespace yxp_utility
 		/// <summary>
 		/// dfs清除内存
 		/// </summary>
-		void clearRoot(TrieNode ** root)
+		void clearRoot(TrieNode<nextcnt> ** root)
 		{
 			if ((*root) == nullptr)
 				return;
-			for (size_t i = 0; i < 26; ++i)
+			for (size_t i = 0; i < nextcnt; ++i)
 			{
 				if ((*root)->nexts[i] != nullptr)
 					clearRoot(&((*root)->nexts[i]));
@@ -144,7 +145,8 @@ namespace yxp_utility
 		}
 
 	private:
-		TrieNode* root_; 
+		TrieNode<nextcnt>* root_;
+		char startValue_;
 	};
 
 }
