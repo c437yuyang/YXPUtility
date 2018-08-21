@@ -55,7 +55,7 @@ namespace yxp_utility
 		/// 从前往后移动,要求i<j
 		/// </summary>
 		template<class T>
-		void keepOrderSwap1(std::vector<T>&arr, size_t i, size_t j)
+		static void keepOrderSwap1(std::vector<T>&arr, size_t i, size_t j)
 		{
 			assert(i <= j);
 			char tmp = arr[j];
@@ -66,7 +66,7 @@ namespace yxp_utility
 
 		//从后往前移动
 		template<class T>
-		void keepOrderSwap2(std::vector<T>&arr, size_t i, size_t j)
+		static void keepOrderSwap2(std::vector<T>&arr, size_t i, size_t j)
 		{
 			assert(i <= j);
 			char tmp = arr[i];
@@ -75,6 +75,13 @@ namespace yxp_utility
 			arr[j] = tmp;
 		}
 
+		//循环右移k位
+		template<class T>
+		static void cycleShift(T *arr, size_t n, size_t k) {
+			std::reverse(arr, arr + n - k); //比如12345 右移3位，就是分成前5-3位和后3位
+			std::reverse(arr + n - k, arr + n);
+			std::reverse(arr, arr + n);
+		}
 	};
 }
 

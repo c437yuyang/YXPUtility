@@ -144,7 +144,7 @@ namespace yxp_utility
 			(*root) = nullptr;
 		}
 
-	private:
+	public:
 		TrieNode<nextcnt>* root_;
 		char startValue_;
 	};
