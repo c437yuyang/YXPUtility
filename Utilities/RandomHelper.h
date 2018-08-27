@@ -128,7 +128,6 @@ namespace yxp_utility
 				memcpy(pTestArr2, pTestArr1, nSize * sizeof(int));
 				pSort(pTestArr1, nSize);
 				std::sort(pTestArr2, pTestArr2 + nSize);
-				memcpy(pTestArr1, pTestArr2, nSize * sizeof(int));
 				if (memcmp(pTestArr1, pTestArr2, nSize * sizeof(int) != 0))
 					return false;
 			}
