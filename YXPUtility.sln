@@ -12,6 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataStructures", "DataStruc
 	ProjectSection(SolutionItems) = preProject
 		DataStructures\Array.h = DataStructures\Array.h
 		DataStructures\BinaryTree.h = DataStructures\BinaryTree.h
+		DataStructures\FifoSet.h = DataStructures\FifoSet.h
 		DataStructures\Heap.h = DataStructures\Heap.h
 		DataStructures\List.h = DataStructures\List.h
 		DataStructures\MaxMinQueue.h = DataStructures\MaxMinQueue.h

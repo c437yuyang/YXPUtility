@@ -8,6 +8,7 @@
 #include "DataStructures/MaxMinQueue.h"
 #include "DataStructures/MaxMinQueue.h"
 #include "DataStructures/TrieTree.h"
+#include "DataStructures/FifoSet.h"
 
 
 
@@ -16,6 +17,7 @@
 #include "Utilities/StrAlgo.h"
 #include "Utilities/HashHelper.h"
 #include "Utilities/CLibs_Impl.h"
+#include "Utilities/auto_ptr.h"
 
 //Need MFC
 //#include "Utilities/YXPFileIO.h"
