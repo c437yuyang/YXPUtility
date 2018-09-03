@@ -153,6 +153,7 @@
     <ClCompile Include="ArrayTest.cpp" />
     <ClCompile Include="BinaryTreeTest.cpp" />
     <ClCompile Include="Clibs_ImplTest.cpp" />
+    <ClCompile Include="FifoMapTest.cpp" />
     <ClCompile Include="FifoSetTest.cpp" />
     <ClCompile Include="HashHelperTest.cpp" />
     <ClCompile Include="HeapTest.cpp" />

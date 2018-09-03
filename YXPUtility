@@ -9,6 +9,7 @@
 #include "DataStructures/MaxMinQueue.h"
 #include "DataStructures/TrieTree.h"
 #include "DataStructures/FifoSet.h"
+#include "DataStructures/FifoMap.h"
 
 
 
