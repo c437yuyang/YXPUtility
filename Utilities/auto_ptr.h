@@ -60,5 +60,10 @@ namespace yxp_utility {
 	private:
 		T * pointer_;
 	};
+
+	template<class T>
+	auto_ptr<T> make_auto_ptr() {
+		return auto_ptr<T>(new T);
+	}
 }
 
